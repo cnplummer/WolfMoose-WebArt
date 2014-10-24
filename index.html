@@ -5,6 +5,19 @@
   <title></title>
 </head>
 <body>
-  
+  <audio id=source1 src="audio.wav" preload="auto">
+    <p>Your browser doesn't support the audio element.</p>
+  </audio>
+
+  <div>
+    <button onclick="document.getElementById('source1').play()">
+      Play the Audio</button>
+  <button onclick="document.getElementById('source1').pause()">
+    Pause the Audio</button>
+  <button onclick="document.getElementById('source1').volume+=0.1">
+    Increase Volume</button>
+  <button onclick="document.getElementById('source1').volume-=0.1">
+    Decrease Volume</button>
+  </div>
 </body>
 </html>
