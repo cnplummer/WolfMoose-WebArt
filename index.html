@@ -12,23 +12,35 @@
   <div>
     <button id="btnPlay">
       Play the Audio</button>
-  <button onclick="document.getElementById('src1').pause()">
+  <button id="btnStop">
     Pause the Audio</button>
-  <button onclick="document.getElementById('src1').volume+=0.1">
+  <button id="btnPlus">
     Increase Volume</button>
-  <button onclick="document.getElementById('src1').volume-=0.1">
+  <button id="btnMinus">
     Decrease Volume</button>
   </div>
     
     <script>
             var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
             var source = audioCtx.createMediaElementSource(document.getElementById("src1"));
-            source.connect(audioCtx.destination);
+            
+            var gainNode = audioCtx.createGain();
+        source.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        var gainValue = .5;
+        
+            
             var btnPlay = document.getElementById("btnPlay");
-            console.log(source);
-            console.log(btnPlay);
-            btnPlay.onclick(source.mediaElement.play());
-            console.log(source);
+            btnPlay.onclick = function(){source.mediaElement.play();};
+            
+            var btnStop = document.getElementById("btnStop");
+            btnStop.onclick = function(){source.mediaElement.pause();};
+            
+        var btnPlus = document.getElementById("btnPlus");
+            btnPlus.onclick = function(){ gainValue += .1; gainNode.gain.value = gainValue; console.log(gainNode.gain.value)};
+            
+        var btnMinus = document.getElementById("btnMinus");
+           btnMinus.onclick = function(){gainValue -= .1; gainNode.gain.value = gainValue; console.log(gainNode.gain.value)};
         
     </script>
 </body>
