@@ -5,19 +5,31 @@
   <title></title>
 </head>
 <body>
-  <audio id=source1 src="audio.wav" preload="auto">
+  <audio id="src1" src="LoveV1.wav" controls="true">
     <p>Your browser doesn't support the audio element.</p>
   </audio>
 
   <div>
-    <button onclick="document.getElementById('source1').play()">
+    <button id="btnPlay">
       Play the Audio</button>
-  <button onclick="document.getElementById('source1').pause()">
+  <button onclick="document.getElementById('src1').pause()">
     Pause the Audio</button>
-  <button onclick="document.getElementById('source1').volume+=0.1">
+  <button onclick="document.getElementById('src1').volume+=0.1">
     Increase Volume</button>
-  <button onclick="document.getElementById('source1').volume-=0.1">
+  <button onclick="document.getElementById('src1').volume-=0.1">
     Decrease Volume</button>
   </div>
+    
+    <script>
+            var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            var source = audioCtx.createMediaElementSource(document.getElementById("src1"));
+            source.connect(audioCtx.destination);
+            var btnPlay = document.getElementById("btnPlay");
+            console.log(source);
+            console.log(btnPlay);
+            btnPlay.onclick(source.mediaElement.play());
+            console.log(source);
+        
+    </script>
 </body>
 </html>
