@@ -20,6 +20,10 @@
     Decrease Volume</button>
   </div>
     
+    <form>
+        <input type="range" name="points" min="0" max="100" id= "gainSlide">
+    </form>
+    
     <script>
             var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
             var source = audioCtx.createMediaElementSource(document.getElementById("src1"));
@@ -29,11 +33,11 @@
         gainNode.connect(audioCtx.destination);
         var gainValue = .5;
         
-            
-            var btnPlay = document.getElementById("btnPlay");
+       
+        var btnPlay = document.getElementById("btnPlay");
             btnPlay.onclick = function(){source.mediaElement.play();};
             
-            var btnStop = document.getElementById("btnStop");
+        var btnStop = document.getElementById("btnStop");
             btnStop.onclick = function(){source.mediaElement.pause();};
             
         var btnPlus = document.getElementById("btnPlus");
@@ -42,6 +46,10 @@
         var btnMinus = document.getElementById("btnMinus");
            btnMinus.onclick = function(){gainValue -= .1; gainNode.gain.value = gainValue; console.log(gainNode.gain.value)};
         
+        var slide = document.getElementById("gainSlide");    
+            slide.onchange = function(){gainNode.gain.value = slide.valueAsNumber / 100.0; console.log(gainNode.gain.value)};
+        
+       
     </script>
 </body>
 </html>
