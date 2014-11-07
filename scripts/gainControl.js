@@ -151,5 +151,4 @@ document.addEventListener('mousemove', mouseGainControl, false);
 //initial update of the value of current gain.
 updateGainLabel();
 
-
-
+//console.log(source);

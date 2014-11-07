@@ -2,12 +2,18 @@
 <html>
 <!-- created 2014-10-15 -->
 <head>
+    
     <title></title>
+    <script type="text/javascript" src="scripts/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="scripts/chroma.js"></script>
 </head>
 <body>
     <audio id="src1" src="LoveV1.wav" loop>
         <p>Your browser doesn't support the audio element.</p>
     </audio>
+    
+    <canvas id="canvas" width="800" height="512" style="display: block; background-color: black ;"></canvas>
+    <br>
     
     <div>
         <button id="btnPlay">
@@ -31,8 +37,9 @@
         Disabled</button>
     </div>
     <p id="gainDisplay">[undefined]</p>
-        
+    
     
     <script src="scripts/gainControl.js"></script>
+    <script type="text/javascript" src="scripts/spectrogram.js"></script>
 </body>
 </html>
