@@ -102,4 +102,4 @@ setupAudioNodes();
 // when the javascript node is called
 // we use information from the analyzer node
 // to draw the volume
-javascriptNode.onaudioprocess = audioProcess();
+javascriptNode.onaudioprocess = audioProcess;
