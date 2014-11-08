@@ -1,13 +1,6 @@
-var audioCtx,       //The context of the Web Audio API - neccesary for node 
-                    //linking
-    source,         //The AudioNode that holds the audio output from the HTML
+var source,         //The AudioNode that holds the audio output from the HTML
                     //audio source
-    gainNode,       //The gain node, routed as: source => gainNode =>
-                    //destination
     gainValue,      //The stored value of the gain: a value 0 - 1
-    btnPlay,        //HTML button for "playing" source
-    btnStop,        //HTML button for "pausing" source
-    btnReset,       //HTML button for restarting the audio
     btnPlus,        //HTML button for increasing the gain in the gainNode
     btnMinus,       //HTML button for decreasing the gain in the gainNode
     slide,          //HTML input for controling gain, range 0 - 100
@@ -34,23 +27,6 @@ function updateGainLabel() {
     gainLabel.innerHTML = "Current Gain: " + gainValue.toPrecision(2);
 }
 
-//plays the source audio
-function buttonPlay() {
-    "use strict";
-    source.mediaElement.play();
-}
-
-//pauses the source audio
-function buttonPause() {
-    "use strict";
-    source.mediaElement.pause();
-}
-
-//resets the audio source to the beginning
-function resetSource() {
-    "use strict";
-    source.mediaElement.currentTime = 0;
-}
 
 //increasing the gain by 0.1 to a maximum of 1.
 function gainIncrease() {
@@ -103,19 +79,6 @@ function mouseGainControl(e) {
     }
 }
 
-//Create an audio context from the HTML5 audio source
-audioCtx = new window.AudioContext();
-//audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-source = audioCtx.createMediaElementSource(document.getElementById("src1"));
-
-//Define Nodes to be connected
-gainNode = audioCtx.createGain();
-
-//Connect Nodes:
-//Source --> GainNode --> Destination
-source.connect(gainNode);
-gainNode.connect(audioCtx.destination);
-
 //Stores the current value for the gainNode. Should never excede [0,1].
 gainValue = 0.5;
 
@@ -123,9 +86,6 @@ gainValue = 0.5;
 mouseCntl = false;
 
 //obtain the object of each of the HTML control systems
-btnPlay = document.getElementById("btnPlay");
-btnStop = document.getElementById("btnStop");
-btnReset = document.getElementById("btnReset");
 btnPlus = document.getElementById("btnPlus");
 btnMinus = document.getElementById("btnMinus");
 slide = document.getElementById("gainSlide");
@@ -133,9 +93,6 @@ btnToggleMouse = document.getElementById("toggleMouse");
 gainLabel = document.getElementById("gainDisplay");
 
 //Assign functions to each button to execute on activation
-btnPlay.onclick = buttonPlay;
-btnStop.onclick = buttonPause;
-btnReset.onclick = resetSource;
 btnPlus.onclick = gainIncrease;
 btnMinus.onclick = gainDecrease;
 
@@ -150,5 +107,3 @@ document.addEventListener('mousemove', mouseGainControl, false);
 
 //initial update of the value of current gain.
 updateGainLabel();
-
-//console.log(source);
