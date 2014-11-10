@@ -27,7 +27,7 @@ function resetSource() {
 //Create an audio context from the HTML5 audio source
 audioCtx = new window.AudioContext();
 
-source = audioCtx.createMediaElementSource(document.getElementById("src1"));
+source = audioCtx.createMediaElementSource(document.getElementById("srcEnv"));
 
 //Define Nodes to be connected
 gainNode = audioCtx.createGain();
