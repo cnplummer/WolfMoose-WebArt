@@ -4,18 +4,25 @@ var audioCtx,       //The context of the Web Audio API - neccesary for node
                     //destination
     btnPlay,        //HTML button for "playing" source
     btnStop,        //HTML button for "pausing" source
-    btnReset;       //HTML button for restarting the audio
+    btnReset,       //HTML button for restarting the audio
+    source;         //The AudioNode that holds the audio output from the HTML
+                    //audio source
     
 //plays the source audio
 function buttonPlay() {
     "use strict";
     source.mediaElement.play();
+    btnPlay.disabled = true;
+    btnStop.disabled = false;
+    
 }
 
 //pauses the source audio
 function buttonPause() {
     "use strict";
     source.mediaElement.pause();
+    btnPlay.disabled = false;
+    btnStop.disabled = true;
 }
 
 //resets the audio source to the beginning
@@ -44,3 +51,5 @@ btnReset = document.getElementById("btnReset");
 btnPlay.onclick = buttonPlay;
 btnStop.onclick = buttonPause;
 btnReset.onclick = resetSource;
+
+btnStop.disabled = true;

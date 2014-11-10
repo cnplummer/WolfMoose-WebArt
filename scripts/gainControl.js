@@ -1,12 +1,12 @@
-var source,         //The AudioNode that holds the audio output from the HTML
-                    //audio source
-    gainValue,      //The stored value of the gain: a value 0 - 1
+var btnMinus,       //HTML button for decreasing the gain in the gainNode
     btnPlus,        //HTML button for increasing the gain in the gainNode
-    btnMinus,       //HTML button for decreasing the gain in the gainNode
-    slide,          //HTML input for controling gain, range 0 - 100
     btnToggleMouse, //HTML button enable/disable mouse gain control
+    gainLabel,      //<p> that holds the value of the gainNode.
+    gainValue,      //The stored value of the gain: a value 0 - 1
     mouseCntl,      //Boolean, true if browser is reading mouse input
-    gainLabel;      //<p> that holds the value of the gainNode.
+    slide;          //HTML input for controling gain, range 0 - 100
+    
+    
 
 //takes a numeric value. Forces the value into a range [0,1]. If value is not
 //within that range, it is forced to be the closest edge. Ex: -5 -> 0.

@@ -1,16 +1,16 @@
-var analyser,
-    array,
-    audioBuffer,
-    canvas,
-    ctx,
-    hot,
-    i,
-    javascriptNode,
-    sourceNode,    
-    tempCanvas,
-    tempCtx,
-    value;
+var analyser,       //Web Audio node that is used to obtain the frequency data
+    array,          //an array used in drawSpectogram to store frequency data
+    canvas,         //The drawable area for the spectrogram
+    ctx,            //Context element of the canvas area
+    hot,            //Stores the color distribution of the spectrogram
+    i,              //variable used for iteration in drawSpectrogram
+    javascriptNode, //Node that triggers javascript function when it detects an
+                    //audio process.
+    tempCanvas,     //Used to store the spectrogram's image at the last sample
+    tempCtx,        //The 2d context of tempCanvas
+    value;          //temporary variable used in drawSpectrogram
 
+//Draws the spectrogram onto the canvas
 function drawSpectrogram(array) {
     "use strict";
     // copy the current canvas onto the temp canvas
@@ -34,6 +34,7 @@ function drawSpectrogram(array) {
     ctx.setTransform(1, 0, 0, 1, 0, 0);
 }
 
+//function called by the javascript node
 function audioProcess() {
     "use strict";
     // get the average for the first channel
