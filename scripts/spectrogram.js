@@ -14,7 +14,7 @@ var analyser,       //Web Audio node that is used to obtain the frequency data
 function drawSpectrogram(array) {
     "use strict";
     // copy the current canvas onto the temp canvas
-    tempCtx.drawImage(canvas, 0, 0, 800, 512);
+    tempCtx.drawImage(canvas, 0, 0, 400, 256);
 
     // iterate over the elements from the array
     for (i = 0; i < array.length; i += 1) {
@@ -23,13 +23,13 @@ function drawSpectrogram(array) {
         ctx.fillStyle = hot.getColor(value).hex();
 
         // draw the line at the right side of the canvas
-        ctx.fillRect(800 - 1, 512 - i, 1, 1);
+        ctx.fillRect(400 - 1, 256 - i, 1, 1);
     }
 
     // set translate on the canvas
     ctx.translate(-1, 0);
     // draw the copied image
-    ctx.drawImage(tempCanvas, 0, 0, 800, 512, 0, 0, 800, 512);
+    ctx.drawImage(tempCanvas, 0, 0, 400, 256, 0, 0, 400, 256);
     // reset the transformation matrix
     ctx.setTransform(1, 0, 0, 1, 0, 0);
 }
@@ -57,8 +57,8 @@ ctx = $("#canvas").get()[0].getContext("2d");
 // create a temp canvas we use for copying
 tempCanvas = document.createElement("canvas");
 tempCtx = tempCanvas.getContext("2d");
-tempCanvas.width = 800;
-tempCanvas.height = 512;
+tempCanvas.width = 400;
+tempCanvas.height = 256;
 
 // used for color distribution
 hot = new chroma.ColorScale({
@@ -76,7 +76,7 @@ javascriptNode.connect(audioCtx.destination);
 // setup a analyzer
 analyser = audioCtx.createAnalyser();
 analyser.smoothingTimeConstant = 0;
-analyser.fftSize = 1024;
+analyser.fftSize = 512;
 
 // create a buffer source node
 gainNode.connect(analyser);
