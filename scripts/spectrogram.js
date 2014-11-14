@@ -68,7 +68,7 @@ hot = new chroma.ColorScale({
     limits: [0, 300]
 });
 
-// setup a javascript node
+// setup a javascript node [affects speed]
 javascriptNode = audioCtx.createScriptProcessor(2048, 1, 1);
 // connect to destination, else it isn't called
 javascriptNode.connect(audioCtx.destination);
