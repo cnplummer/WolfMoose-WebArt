@@ -53,3 +53,5 @@ btnStop.onclick = buttonPause;
 btnReset.onclick = resetSource;
 
 btnStop.disabled = true;
+
+var s = new Spectrogram();
