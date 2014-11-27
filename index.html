@@ -19,7 +19,7 @@
         <p>Your browser doesn't support the audio element.</p>
     </audio>
     
-    <canvas id="canvas" width="400" height="256" style="display: block; background-color: black ;"></canvas>
+    <canvas id="canvas0" width="400" height="256" style="display: block; background-color: black ;"></canvas>
     <br>
     
     <div>
@@ -30,23 +30,14 @@
         <button id="btnReset">
             Reset Audio</button>
     </div>
-    <br>
-    <div>
-        <button id="btnPlus">
-            Increase Volume</button>
-        <button id="btnMinus">
-            Decrease Volume</button>
-    </div>
-    <input type="range" min="0" max="100" id= "gainSlide">
-    <div>
-        Mouse Gain Control
-        <button id="toggleMouse">
-        Disabled</button>
-    </div>
-    <p id="gainDisplay">[undefined]</p>
+    
+    <input type="range" min="0" max="100" id= "gainSlide0">
+    <input type="range" min="0" max="100" id= "gainSlide1">
+    <input type="range" min="0" max="100" id= "gainSlide2">
+   
     
     <script type="text/javascript" src="scripts/audioPath.js"></script>
     <script type="text/javascript" src="scripts/gainControl.js"></script>
-    <script type="text/javascript" src="scripts/spectrogram.js"></script>
+    <script type="text/javascript" src="scripts/spectrogram0.js"></script>
 </body>
 </html>

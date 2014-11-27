@@ -1,26 +1,31 @@
 var audioCtx,       //The context of the Web Audio API - neccesary for node 
                     //linking
-    gainNode,       //The gain node, routed as: source => gainNode =>
+    gainNode0,       //The gain node, routed as: source => gainNode =>
                     //destination
     btnPlay,        //HTML button for "playing" source
     btnStop,        //HTML button for "pausing" source
     btnReset,       //HTML button for restarting the audio
-    source;         //The AudioNode that holds the audio output from the HTML
+    source2,
+    source1,
+    source0;         //The AudioNode that holds the audio output from the HTML
                     //audio source
     
 //plays the source audio
 function buttonPlay() {
     "use strict";
-    source.mediaElement.play();
+    source0.mediaElement.play();
+    source1.mediaElement.play();
+    source2.mediaElement.play();
     btnPlay.disabled = true;
     btnStop.disabled = false;
-    
 }
 
 //pauses the source audio
 function buttonPause() {
     "use strict";
-    source.mediaElement.pause();
+    source0.mediaElement.pause();
+    source1.mediaElement.pause();
+    source2.mediaElement.pause();
     btnPlay.disabled = false;
     btnStop.disabled = true;
 }
@@ -28,21 +33,33 @@ function buttonPause() {
 //resets the audio source to the beginning
 function resetSource() {
     "use strict";
-    source.mediaElement.currentTime = 0;
+    source0.mediaElement.currentTime = 0;
+    source1.mediaElement.currentTime = 0;
+    source2.mediaElement.currentTime = 0;
 }
 
 //Create an audio context from the HTML5 audio source
 audioCtx = new window.AudioContext();
 
-source = audioCtx.createMediaElementSource(document.getElementById("srcEnv"));
+source0 = audioCtx.createMediaElementSource(document.getElementById("srcEnv"));
+source1 = audioCtx.createMediaElementSource(document.getElementById("srcWolf"));
+source2 = audioCtx.createMediaElementSource(document.getElementById("srcMoose"));
 
 //Define Nodes to be connected
-gainNode = audioCtx.createGain();
+gainNode0 = audioCtx.createGain();
+gainNode1 = audioCtx.createGain();
+gainNode2 = audioCtx.createGain();
 
 //Connect Nodes:
 //Source --> GainNode --> Destination
-source.connect(gainNode);
-gainNode.connect(audioCtx.destination);
+source0.connect(gainNode0);
+gainNode0.connect(audioCtx.destination);
+
+source1.connect(gainNode1);
+gainNode1.connect(audioCtx.destination);
+
+source2.connect(gainNode2);
+gainNode2.connect(audioCtx.destination);
 
 btnPlay = document.getElementById("btnPlay");
 btnStop = document.getElementById("btnStop");
@@ -53,3 +70,4 @@ btnStop.onclick = buttonPause;
 btnReset.onclick = resetSource;
 
 btnStop.disabled = true;
+
