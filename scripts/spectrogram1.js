@@ -22,7 +22,6 @@ function drawSpectrogram1(array) {
     ctx1.drawImage(tempCanvas1, 0, 0, 400, 256, 0, 0, 400, 256);
     // reset the transformation matrix
     ctx1.setTransform(1, 0, 0, 1, 0, 0);
-    console.log("stuff");
 }
 
 //function called by the javascript node
