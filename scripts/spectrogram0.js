@@ -64,6 +64,22 @@ javascriptNode0 = audioCtx.createScriptProcessor(2048, 1, 1);
 javascriptNode0.connect(audioCtx.destination);
 
 // setup a analyzer
+var analyserArray0 = new Array(256);
+
+//Q = center_frequency / (top_frequency - bottom_frequency)
+//20 - 20,000, log 10
+var stepFunc0 = 4 / 256;
+var arrayNum0 = 0;
+for(var j=1+stepFunc0 ; j <= 4; j+=stepFunc0){
+    var num0 = 2*Math.pow(10, (j+j-stepFunc0)/2);
+    analyserArray0[arrayNum0] = audioCtx.createBiquadFilter();
+    analyserArray0[arrayNum0].type = "bandpass";
+    analyserArray0[arrayNum0].frequency.value = num0;
+    analyserArray0[arrayNum0].Q.value = num0 / (2*Math.pow(10, j) - 2*Math.pow(10, j-stepFunc0));
+    arrayNum0++;
+}
+console.log(analyserArray0[0]);
+
 analyser0 = audioCtx.createAnalyser();
 analyser0.smoothingTimeConstant = 0;
 analyser0.fftSize = 512;
