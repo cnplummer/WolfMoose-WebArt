@@ -63,6 +63,25 @@ javascriptNode0 = audioCtx.createScriptProcessor(2048, 1, 1);
 // connect to destination, else it isn't called
 javascriptNode0.connect(audioCtx.destination);
 
+
+// Generating a data set for spectrogram from log.
+var FilterArray0 = new Array(256);
+var logStart0 = Math.log(20);
+//Generate 256 bins from a log range of 20-20000
+var stepFunc0 = (Math.log10(20000)-logStart0) / 256;
+var arrayNum0 = 0;
+//Because of non-precise nature of the visualization, the loop will cycle
+// through the bin's lower range.
+for(var j = logStart0+stepFunc0; j <= 4; j+=stepFunc0){
+    //Q = center_frequency / (top_frequency - bottom_frequency)
+    var freqTop = Math.pow(10, (stepFunc0/2) + j);
+    var freqCenter = Math.pow(10, (stepFunc0/4) + j);
+    FilterArray0[arrayNum0] = audioCtx.createBiquadFilter();
+    FilterArray0[arrayNum0].type = "bandpass";
+    FilterArray0[arrayNum0].frequency.value = freqCenter;
+    FilterArray0[arrayNum0].Q.value = freqCenter / (freqTop - Math.pow(10, j));
+    arrayNum0++;
+}
 // setup a analyzer
 analyser0 = audioCtx.createAnalyser();
 analyser0.smoothingTimeConstant = 0;
