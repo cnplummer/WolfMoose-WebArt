@@ -28,13 +28,28 @@ function drawSpectrogram0(array) {
 function audioProcess0() {
     "use strict";
     // get the average for the first channel
-    var array = new Uint8Array(analyser0.frequencyBinCount);
-    analyser0.getByteFrequencyData(array);
+    var array = new Uint8Array(32);
+    var sendArray = new Uint8Array(256);
+    var j0 = 0;
+    
+    for(var j = 0; j < 256; j++){
+        analyserArray0[j].getByteFrequencyData(array);
+        var sum = 0;
+        for(var k = 0; k < 32; k++){
+            sum += array[k];
+        }
+        
+        sendArray[j0] = sum/8;
+        j0++;
+    }
+    
+    //var array = new Uint8Array(analyser0.frequencyBinCount);
+    //analyser0.getByteFrequencyData(array);
 
     // draw the spectrogram
     if (!source0.mediaElement.paused) {
         //console.log(document.getElementById("src1").paused);
-        drawSpectrogram0(array);
+        drawSpectrogram0(sendArray);
     }
 }
 
@@ -66,13 +81,14 @@ javascriptNode0.connect(audioCtx.destination);
 
 // Generating a data set for spectrogram from log.
 var FilterArray0 = new Array(256);
-var logStart0 = Math.log(20);
+var logStart0 = Math.log10(20);
+var logEnd0 = Math.log10(20000);
 //Generate 256 bins from a log range of 20-20000
-var stepFunc0 = (Math.log10(20000)-logStart0) / 256;
+var stepFunc0 = (logEnd0-logStart0) / 256;
 var arrayNum0 = 0;
 //Because of non-precise nature of the visualization, the loop will cycle
 // through the bin's lower range.
-for(var j = logStart0+stepFunc0; j <= 4; j+=stepFunc0){
+for(var j = logStart0; j < logEnd0 + (stepFunc0/2); j+=stepFunc0){
     //Q = center_frequency / (top_frequency - bottom_frequency)
     var freqTop = Math.pow(10, (stepFunc0/2) + j);
     var freqCenter = Math.pow(10, (stepFunc0/4) + j);
@@ -80,16 +96,29 @@ for(var j = logStart0+stepFunc0; j <= 4; j+=stepFunc0){
     FilterArray0[arrayNum0].type = "bandpass";
     FilterArray0[arrayNum0].frequency.value = freqCenter;
     FilterArray0[arrayNum0].Q.value = freqCenter / (freqTop - Math.pow(10, j));
+    gainNode0.connect(FilterArray0[arrayNum0]);
     arrayNum0++;
 }
+console.log(arrayNum0);
+
+analyserArray0 = new Array(256);
+
+for(var j = 0; j < 256; j++){
+    analyserArray0[j] = audioCtx.createAnalyser();
+    analyserArray0[j].fftSize = 32;
+    FilterArray0[j].connect(analyserArray0[j]);
+    //analyserArray0[j].connect(javascriptNode0);
+}
+
 // setup a analyzer
-analyser0 = audioCtx.createAnalyser();
+/*analyser0 = audioCtx.createAnalyser();
 analyser0.smoothingTimeConstant = 0;
-analyser0.fftSize = 512;
+analyser0.fftSize = 256;*/
+//analyser0.fftSize = 512;
 
 // create a buffer source node
-gainNode0.connect(analyser0);
-analyser0.connect(javascriptNode0);
+//gainNode0.connect(analyser0);
+gainNode0.connect(javascriptNode0);
 
 
 // when the javascript node is called
