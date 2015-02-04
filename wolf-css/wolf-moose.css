@@ -1,0 +1,16 @@
+body {
+  padding-top: 20px;
+}
+.intro-text {
+  padding: 40px 15px;
+  text-align: center;
+}
+.centered {
+    margin: auto;
+    display: block;
+}
+.slider {
+     padding-top: 40px;  
+}
+
+

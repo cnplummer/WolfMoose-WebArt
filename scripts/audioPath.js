@@ -16,8 +16,8 @@ function buttonPlay() {
     source0.mediaElement.play();
     source1.mediaElement.play();
     source2.mediaElement.play();
-    btnPlay.disabled = true;
-    btnStop.disabled = false;
+/*    btnPlay.disabled = true;
+    btnStop.disabled = false;*/
 }
 
 //pauses the source audio
@@ -26,8 +26,8 @@ function buttonPause() {
     source0.mediaElement.pause();
     source1.mediaElement.pause();
     source2.mediaElement.pause();
-    btnPlay.disabled = false;
-    btnStop.disabled = true;
+/*    btnPlay.disabled = false;
+    btnStop.disabled = true;*/
 }
 
 //resets the audio source to the beginning
@@ -65,9 +65,19 @@ btnPlay = document.getElementById("btnPlay");
 btnStop = document.getElementById("btnStop");
 btnReset = document.getElementById("btnReset");
 
+/*
 btnPlay.onclick = buttonPlay;
 btnStop.onclick = buttonPause;
 btnReset.onclick = resetSource;
+*/
 
-btnStop.disabled = true;
+/*btnStop.disabled = true;*/
+
+//Initilize Gain to zero
+gainNode0.gain.value = 0;
+gainNode1.gain.value = 0;
+gainNode2.gain.value = 0;
+
+//Play all tracks initially
+buttonPlay();
 

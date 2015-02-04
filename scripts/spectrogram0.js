@@ -4,7 +4,7 @@
 function drawSpectrogram0(array) {
     "use strict";
     // copy the current canvas onto the temp canvas
-    tempCtx0.drawImage(canvas0, 0, 0, 400, 256);
+    tempCtx0.drawImage(canvas0, 0, 0, 350, 256);
 
     // iterate over the elements from the array
     for (var i = 0; i < array.length; i += 1) {
@@ -13,13 +13,13 @@ function drawSpectrogram0(array) {
         ctx0.fillStyle = hot.getColor(value).hex();
 
         // draw the line at the right side of the canvas
-        ctx0.fillRect(400 - 1, 256 - i, 1, 1);
+        ctx0.fillRect(350 - 1, 256 - i, 1, 1);
     }
 
     // set translate on the canvas
     ctx0.translate(-1, 0);
     // draw the copied image
-    ctx0.drawImage(tempCanvas0, 0, 0, 400, 256, 0, 0, 400, 256);
+    ctx0.drawImage(tempCanvas0, 0, 0, 350, 256, 0, 0, 350, 256);
     // reset the transformation matrix
     ctx0.setTransform(1, 0, 0, 1, 0, 0);
 }
@@ -47,7 +47,7 @@ ctx0 = $("#canvas0").get()[0].getContext("2d");
 // create a temp canvas we use for copying
 tempCanvas0 = document.createElement("canvas");
 tempCtx0 = tempCanvas0.getContext("2d");
-tempCanvas0.width = 400;
+tempCanvas0.width = 350;
 tempCanvas0.height = 256;
 
 // used for color distribution

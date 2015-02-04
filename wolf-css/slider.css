@@ -1,0 +1,37 @@
+
+.player {
+    width: 50px;
+    height: 120px;    
+    position: relative;
+    margin: 0 auto;
+    top: 0px;
+   /* background: url('/Images/button_wolves.svg') no-repeat left top;*/
+}
+
+.volume {
+    position: absolute;
+    left: 21.5px;
+    margin: 0 auto;
+    margin-top: 0px;
+    height: 120px;
+    width: 7px;
+    background: url('/Images/fader_base.svg') no-repeat left ;
+}
+
+ .volume .ui-slider-range-min {
+    height: 120px;
+    width: 7px;
+    position: absolute;
+    background: url('/Images/button_environment.svg') no-repeat left ;
+}
+
+ .volume .ui-slider-handle {
+    width: 32px;
+    height: 14px;
+    background: url('/Images/fader.svg') no-repeat;
+    position: absolute;
+    margin-left: -12px;
+    margin-top: -15px;
+    cursor: pointer;
+    outline: none;
+}

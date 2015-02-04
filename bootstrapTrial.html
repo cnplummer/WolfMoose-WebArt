@@ -15,7 +15,7 @@
 
         <!-- Custom styles for this template -->
         <link href="/wolf-css/wolf-moose.css" rel="stylesheet">
-        <link href="/wolf-css/slider.css" rel="stylesheet">
+
         <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" src="/scripts/chroma.js"></script>
 
@@ -68,9 +68,9 @@
         </div>
 
         <div class="container">
-<!--            <div class="row" style="padding-top: 20px">
+            <div class="row">
                 <div class="col-lg-4">
-                    <button class="centered" id="btnPlay">Play the Audio</button>
+                        <button class="centered" id="btnPlay">Play the Audio</button>
                 </div>
                 <div class="col-lg-4">
                     <button class="centered" id="btnStop">Pause the Audio</button>
@@ -78,36 +78,20 @@
                 <div class="col-lg-4">
                     <button class="centered" id="btnReset">Reset Audio</button>
                 </div>
-            </div>-->
+            </div>
 
             <div class="row">
-                <!--                Slider 1-->
-                <div class="col-lg-4 slider">
-                    <div class="player">
-                        <div class="volume slider1"></div>
-                    </div>
+                <div class="col-lg-4">
+                    <input type="range" min="0" max="100" id= "gainSlide0">
                 </div>
-
-                <!--                Slider 2-->
-                <div class="col-lg-4 slider">
-                    <div class="player">
-                        <div class="volume slider2"></div>
-                    </div>
+                <div class="col-lg-4">
+                    <input type="range" min="0" max="100" id= "gainSlide1">
                 </div>
-
-                <!--                Slider 3-->
-                <div class="col-lg-4 slider">
-                    <div class="player">
-                        <div class="volume slider3"></div>
-                    </div>
+                <div class="col-lg-4">
+                    <input type="range" min="0" max="100" id= "gainSlide2">
                 </div>
             </div>
         </div>
-        
-        <div class="container" style="padding-top: 50px">
-        </div>
-
-
 
 
         <!-- Bootstrap core JavaScript
@@ -116,13 +100,10 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="/wolf-js/bootstrap.min.js"></script>
         <script type="text/javascript" src="/scripts/audioPath.js"></script>
-<!--        <script type="text/javascript" src="/scripts/gainControl.js"></script>-->
+        <script type="text/javascript" src="/scripts/gainControl.js"></script>
         <script type="text/javascript" src="/scripts/spectrogram0.js"></script>
         <script type="text/javascript" src="/scripts/spectrogram1.js"></script>
         <script type="text/javascript" src="/scripts/spectrogram2.js"></script>
-        <script src="http://code.jquery.com/ui/jquery-ui-git.js"></script>
-        <script type="text/javascript" src="/scripts/slider1.js"></script>
-        <script type="text/javascript" src="/scripts/slider2.js"></script>
-        <script type="text/javascript" src="/scripts/slider3.js"></script>
-    </body>
-</html>
+
+
+    </body></html>
