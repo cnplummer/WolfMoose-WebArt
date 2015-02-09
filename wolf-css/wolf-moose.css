@@ -1,5 +1,3 @@
-body {
-}
 .intro-text {
     padding-left: 60px;
     padding-right: 60px;
@@ -12,16 +10,21 @@ body {
     display: block;
 }
 .mainContainer {
-    background: url("/wolf-img/BKG_Full.svg") no-repeat center center fixed;
+    /* background: url("/wolf-img/BKG_Full.svg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     height: 100%;
-    overflow-y: hidden;
+    overflow-y: hidden;*/
 }
 html, body {
-    height: 100%;
+    min-height: 100%;
+    background: url("/wolf-img/BKG_Full.svg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 .btn-wolf {
     padding: 1px;
@@ -61,7 +64,7 @@ html, body {
     float: left;
 }
 .btn-pause {
-   padding: 1px;
+    padding: 1px;
     border: none;
     height: 40px;
     width: 40px;
@@ -70,7 +73,7 @@ html, body {
     background-color: transparent;
 }
 .btn-stop {
-   padding: 1px;
+    padding: 1px;
     border: none;
     height: 40px;
     width: 40px;
@@ -80,5 +83,25 @@ html, body {
     margin-left: 0px;
     float: right;
 }
-
-
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    width: 100%;
+    margin: 0 auto;
+    height: 500px;
+}
+.carousel-inner{
+    width: 100%;
+    height: 500px;
+    border-top: 10px;
+    border-left: 10px;
+    border-right: 10px;
+    border-bottom: 10px;
+    border-color: rgba(108, 54, 1, 0.82);
+    border-style: solid;
+}
+.carousel-control{
+    width: 10%;
+}
+.carousel-caption {
+    background-color: rgba(108, 54, 1, 0.80);
+}
