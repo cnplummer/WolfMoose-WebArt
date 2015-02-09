@@ -40,18 +40,13 @@
         </audio>
 
 
+        <div class="container-fluid mainContainer">
 
-        <div class="container">
-
-            <div class="intro-text">
-                <h1>Wolf & Moose Sonification</h1>
-                <p class="lead">A sonic representation of the Isle Royale Wolf & Moose study</p>
+            <div class="intro-text centered">
+                <img src="/wolf-img/Title.png" class="img-responsive">
             </div>
 
-        </div><!-- /.container -->
-
-        <div class="container">
-            <div class="row">
+            <div class="row" style="padding-bottom:40px">
 
                 <div class="col-lg-4">
                     <canvas class="centered" id="canvas0" width="350" height="256" style="display: block; background-color: black ;"></canvas>
@@ -65,22 +60,9 @@
                     <canvas class="centered" id="canvas2" width="350" height="256" style="display: block; background-color: black ;"></canvas>
                 </div>
             </div>
-        </div>
 
-        <div class="container">
-<!--            <div class="row" style="padding-top: 20px">
-                <div class="col-lg-4">
-                    <button class="centered" id="btnPlay">Play the Audio</button>
-                </div>
-                <div class="col-lg-4">
-                    <button class="centered" id="btnStop">Pause the Audio</button>
-                </div>
-                <div class="col-lg-4">
-                    <button class="centered" id="btnReset">Reset Audio</button>
-                </div>
-            </div>-->
 
-            <div class="row">
+            <div class="row" style="padding-bottom: 30px">
                 <!--                Slider 1-->
                 <div class="col-lg-4 slider">
                     <div class="player">
@@ -102,10 +84,28 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row" style="padding-bottom:30px">
+                <div class="col-lg-4">
+                    <button type="button" class="btn btn-wolf centered" id="wolf-button"></button>
+                </div>
+                <div class="col-lg-4">
+                    <button type="button" class="btn btn-moose centered" id="moose-button"></button>
+                </div>
+                <div class="col-lg-4">
+                    <button type="button" class="btn btn-env centered" id="env-button"></button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-2 col-lg-offset-5">
+                    <button type="button" class="btn btn-play" id="btnPlay"></button>
+                    <button type="button" class="btn btn-stop" id="btnReset"></button>
+                    <button type="button" class="btn btn-pause centered" id="btnStop"></button>
+                </div>
+            </div>
         </div>
-        
-        <div class="container" style="padding-top: 50px">
-        </div>
+
 
 
 
@@ -116,7 +116,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="/wolf-js/bootstrap.min.js"></script>
         <script type="text/javascript" src="/scripts/audioPath.js"></script>
-<!--        <script type="text/javascript" src="/scripts/gainControl.js"></script>-->
+        <!--        <script type="text/javascript" src="/scripts/gainControl.js"></script>-->
         <script type="text/javascript" src="/scripts/spectrogram0.js"></script>
         <script type="text/javascript" src="/scripts/spectrogram1.js"></script>
         <script type="text/javascript" src="/scripts/spectrogram2.js"></script>

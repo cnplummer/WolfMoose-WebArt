@@ -15,23 +15,23 @@
     margin-top: 0px;
     height: 120px;
     width: 7px;
-    background: url('/Images/fader_base.svg') no-repeat left ;
+    background: url('/wolf-img/fader_base.svg') no-repeat left ;
 }
 
  .volume .ui-slider-range-min {
     height: 120px;
     width: 7px;
     position: absolute;
-    background: url('/Images/button_environment.svg') no-repeat left ;
+    /*background: url('/wolf-img/button_environment.svg') no-repeat left ;*/
 }
 
  .volume .ui-slider-handle {
-    width: 32px;
-    height: 14px;
-    background: url('/Images/fader.svg') no-repeat;
+    width: 50px;
+    height: 24px;
+    background: url('/wolf-img/slider.svg') no-repeat;
     position: absolute;
-    margin-left: -12px;
-    margin-top: -15px;
+    margin-left: -20px;
+    margin-top: -5px;
     cursor: pointer;
     outline: none;
 }

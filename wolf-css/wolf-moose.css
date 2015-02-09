@@ -1,16 +1,84 @@
 body {
-  padding-top: 20px;
 }
 .intro-text {
-  padding: 40px 15px;
-  text-align: center;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-bottom: 20px;
+    text-align: center;
+    padding-top: 20px;
 }
 .centered {
     margin: auto;
     display: block;
 }
-.slider {
-     padding-top: 40px;  
+.mainContainer {
+    background: url("/wolf-img/BKG_Full.svg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    overflow-y: hidden;
+}
+html, body {
+    height: 100%;
+}
+.btn-wolf {
+    padding: 1px;
+    border: none;
+    height: 28px;
+    width: 73px;
+    background: url('/wolf-img/button_wolves.svg') no-repeat center;
+    background-color: transparent;
+}
+.btn-wolf:disabled {
+    background: url('/wolf-img/button_moose.svg') no-repeat center;
+}
+.btn-moose {
+    padding: 1px;
+    border: none;
+    height: 28px;
+    width: 73px;
+    background: url('/wolf-img/button_moose.svg') no-repeat center;
+    background-color: transparent;
+}
+.btn-env {
+    padding: 1px;
+    border: none;
+    height: 28px;
+    width: 127px;
+    background: url('/wolf-img/button_environment.svg') no-repeat center;
+    background-color: transparent;
+}
+.btn-play {
+    padding: 1px;
+    border: none;
+    height: 40px;
+    width: 40px;
+    background: url('/wolf-img/Trans_Play.svg') no-repeat center;
+    background-size: cover;
+    background-color: transparent;
+    float: left;
+}
+.btn-pause {
+   padding: 1px;
+    border: none;
+    height: 40px;
+    width: 40px;
+    background: url('/wolf-img/Trans_Pause.svg') no-repeat center;
+    background-size: cover;
+    background-color: transparent;
+}
+.btn-stop {
+   padding: 1px;
+    border: none;
+    height: 40px;
+    width: 40px;
+    background: url('/wolf-img/Trans_Stop.svg') no-repeat center;
+    background-size: cover;
+    background-color: transparent;
+    margin-left: 0px;
+    float: right;
 }
 
 

@@ -5,6 +5,10 @@ var audioCtx,       //The context of the Web Audio API - neccesary for node
     btnPlay,        //HTML button for "playing" source
     btnStop,        //HTML button for "pausing" source
     btnReset,       //HTML button for restarting the audio
+    btnWolf,
+    btnMoose,
+    btnEnv,
+    slider1,
     source2,
     source1,
     source0;         //The AudioNode that holds the audio output from the HTML
@@ -16,8 +20,9 @@ function buttonPlay() {
     source0.mediaElement.play();
     source1.mediaElement.play();
     source2.mediaElement.play();
-/*    btnPlay.disabled = true;
-    btnStop.disabled = false;*/
+    btnPlay.disabled = true;
+    btnStop.disabled = false;
+    btnReset.disabled = false;
 }
 
 //pauses the source audio
@@ -26,8 +31,9 @@ function buttonPause() {
     source0.mediaElement.pause();
     source1.mediaElement.pause();
     source2.mediaElement.pause();
-/*    btnPlay.disabled = false;
-    btnStop.disabled = true;*/
+    btnPlay.disabled = false;
+    btnStop.disabled = true;
+    btnReset.disabled = false;
 }
 
 //resets the audio source to the beginning
@@ -36,14 +42,21 @@ function resetSource() {
     source0.mediaElement.currentTime = 0;
     source1.mediaElement.currentTime = 0;
     source2.mediaElement.currentTime = 0;
+    source0.mediaElement.pause();
+    source1.mediaElement.pause();
+    source2.mediaElement.pause();
+    btnReset.disabled = true;
+    btnPlay.disabled = false;
+    btnStop.disabled = true;
 }
+
 
 //Create an audio context from the HTML5 audio source
 audioCtx = new window.AudioContext();
 
-source0 = audioCtx.createMediaElementSource(document.getElementById("srcEnv"));
-source1 = audioCtx.createMediaElementSource(document.getElementById("srcWolf"));
-source2 = audioCtx.createMediaElementSource(document.getElementById("srcMoose"));
+source0 = audioCtx.createMediaElementSource(document.getElementById("srcWolf"));
+source1 = audioCtx.createMediaElementSource(document.getElementById("srcMoose"));
+source2 = audioCtx.createMediaElementSource(document.getElementById("srcEnv"));
 
 //Define Nodes to be connected
 gainNode0 = audioCtx.createGain();
@@ -64,14 +77,20 @@ gainNode2.connect(audioCtx.destination);
 btnPlay = document.getElementById("btnPlay");
 btnStop = document.getElementById("btnStop");
 btnReset = document.getElementById("btnReset");
+btnWolf = document.getElementById("btn-wolf");
+btnMoose = document.getElementById("btn-moose");
+btnEnv = document.getElementById("btn-env");
+slider1 = $(".slider1");
+console.log(slider1);
 
-/*
 btnPlay.onclick = buttonPlay;
 btnStop.onclick = buttonPause;
 btnReset.onclick = resetSource;
-*/
+/*btnWolf.onclick = muteWolf;
+btnMoose.onclick = muteMoose;
+btnEnv.onclick = muteEnv;*/
 
-/*btnStop.disabled = true;*/
+btnPlay.disabled = true;
 
 //Initilize Gain to zero
 gainNode0.gain.value = 0;
