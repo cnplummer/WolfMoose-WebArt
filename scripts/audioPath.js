@@ -57,7 +57,7 @@ audioCtx = new window.AudioContext();
 source0 = audioCtx.createMediaElementSource(document.getElementById("srcWolf"));
 source1 = audioCtx.createMediaElementSource(document.getElementById("srcMoose"));
 source2 = audioCtx.createMediaElementSource(document.getElementById("srcEnv"));
-
+console.log(source0);
 //Define Nodes to be connected
 gainNode0 = audioCtx.createGain();
 gainNode1 = audioCtx.createGain();

@@ -4,7 +4,7 @@
 function drawSpectrogram0(array) {
     "use strict";
     // copy the current canvas onto the temp canvas
-    tempCtx0.drawImage(canvas0, 0, 0, 350, 256);
+    tempCtx0.drawImage(canvas0, 0, 0, 400, 256);
 
     // iterate over the elements from the array
     for (var i = 0; i < array.length; i += 1) {
@@ -13,13 +13,13 @@ function drawSpectrogram0(array) {
         ctx0.fillStyle = hot.getColor(value).hex();
 
         // draw the line at the right side of the canvas
-        ctx0.fillRect(350 - 1, 256 - i, 1, 1);
+        ctx0.fillRect(400 - 1, 256 - i, 1, 1);
     }
 
     // set translate on the canvas
     ctx0.translate(-1, 0);
     // draw the copied image
-    ctx0.drawImage(tempCanvas0, 0, 0, 350, 256, 0, 0, 350, 256);
+    ctx0.drawImage(tempCanvas0, 0, 0, 400, 256, 0, 0, 400, 256);
     // reset the transformation matrix
     ctx0.setTransform(1, 0, 0, 1, 0, 0);
 }
@@ -47,7 +47,7 @@ ctx0 = $("#canvas0").get()[0].getContext("2d");
 // create a temp canvas we use for copying
 tempCanvas0 = document.createElement("canvas");
 tempCtx0 = tempCanvas0.getContext("2d");
-tempCanvas0.width = 350;
+tempCanvas0.width = 400;
 tempCanvas0.height = 256;
 
 // used for color distribution
@@ -68,21 +68,21 @@ var analyserArray0 = new Array(256);
 
 //Q = center_frequency / (top_frequency - bottom_frequency)
 //20 - 20,000, log 10
-var stepFunc0 = 4 / 256;
-var arrayNum0 = 0;
-for(var j=1+stepFunc0 ; j <= 4; j+=stepFunc0){
-    var num0 = 2*Math.pow(10, (j+j-stepFunc0)/2);
-    analyserArray0[arrayNum0] = audioCtx.createBiquadFilter();
-    analyserArray0[arrayNum0].type = "bandpass";
-    analyserArray0[arrayNum0].frequency.value = num0;
-    analyserArray0[arrayNum0].Q.value = num0 / (2*Math.pow(10, j) - 2*Math.pow(10, j-stepFunc0));
-    arrayNum0++;
-}
+//var stepFunc0 = 4 / 256;
+//var arrayNum0 = 0;
+//for(var j=1+stepFunc0 ; j <= 4; j+=stepFunc0){
+//    var num0 = 2*Math.pow(10, (j+j-stepFunc0)/2);
+//    analyserArray0[arrayNum0] = audioCtx.createBiquadFilter();
+//    analyserArray0[arrayNum0].type = "bandpass";
+//    analyserArray0[arrayNum0].frequency.value = num0;
+//    analyserArray0[arrayNum0].Q.value = num0 / (2*Math.pow(10, j) - 2*Math.pow(10, j-stepFunc0));
+//    arrayNum0++;
+//}
 console.log(analyserArray0[0]);
 
 analyser0 = audioCtx.createAnalyser();
 analyser0.smoothingTimeConstant = 0;
-analyser0.fftSize = 512;
+analyser0.fftSize = 2048;
 
 // create a buffer source node
 gainNode0.connect(analyser0);

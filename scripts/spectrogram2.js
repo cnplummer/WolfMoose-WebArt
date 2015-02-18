@@ -4,7 +4,7 @@
 function drawSpectrogram2(array) {
     "use strict";
     // copy the current canvas onto the temp canvas
-    tempCtx2.drawImage(canvas2, 0, 0, 350, 256);
+    tempCtx2.drawImage(canvas2, 0, 0, 400, 256);
 
     // iterate over the elements from the array
     for (var i = 0; i < array.length; i += 1) {
@@ -13,13 +13,13 @@ function drawSpectrogram2(array) {
         ctx2.fillStyle = hot.getColor(value).hex();
 
         // draw the line at the right side of the canvas
-        ctx2.fillRect(350 - 1, 256 - i, 1, 1);
+        ctx2.fillRect(400 - 1, 256 - i, 1, 1);
     }
 
     // set translate on the canvas
     ctx2.translate(-1, 0);
     // draw the copied image
-    ctx2.drawImage(tempCanvas2, 0, 0, 350, 256, 0, 0, 350, 256);
+    ctx2.drawImage(tempCanvas2, 0, 0, 400, 256, 0, 0, 400, 256);
     // reset the transformation matrix
     ctx2.setTransform(1, 0, 0, 1, 0, 0);
 }
@@ -47,7 +47,7 @@ ctx2 = $("#canvas2").get()[0].getContext("2d");
 // create a temp canvas we use for copying
 tempCanvas2 = document.createElement("canvas");
 tempCtx2 = tempCanvas2.getContext("2d");
-tempCanvas2.width = 350;
+tempCanvas2.width = 400;
 tempCanvas2.height = 256;
 
 // used for color distribution
@@ -66,7 +66,7 @@ javascriptNode2.connect(audioCtx.destination);
 // setup a analyzer
 analyser2 = audioCtx.createAnalyser();
 analyser2.smoothingTimeConstant = 0;
-analyser2.fftSize = 512;
+analyser2.fftSize = 2048;
 
 // create a buffer source node
 gainNode2.connect(analyser2);

@@ -7,7 +7,7 @@ $(document).ready(function() {
         orientation: "vertical",
         animate: "true",
         slide: function(event, ui) {
-        setVolume(ui.value / 100);
+        setVolume(ui.value / 12);
         }
     });
     

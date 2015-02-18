@@ -1,37 +1,37 @@
 
 .player {
-    width: 50px;
-    height: 120px;    
+    width: 14px;
+    height: 196px;    
     position: relative;
     margin: 0 auto;
-    top: 0px;
-   /* background: url('/Images/button_wolves.svg') no-repeat left top;*/
+    top: -5px;
+    /* background: url('/Images/button_wolves.svg') no-repeat left top;*/
 }
 
 .volume {
     position: absolute;
-    left: 21.5px;
+
     margin: 0 auto;
     margin-top: 0px;
-    height: 120px;
-    width: 7px;
-    background: url('/wolf-img/fader_base.svg') no-repeat left ;
+    height: 196px;
+    width: 14px;
+    background: url('/wolf-img/Track.svg') no-repeat left ;
 }
 
- .volume .ui-slider-range-min {
+.volume .ui-slider-range-min {
     height: 120px;
     width: 7px;
     position: absolute;
-    /*background: url('/wolf-img/button_environment.svg') no-repeat left ;*/
 }
 
- .volume .ui-slider-handle {
+.volume .ui-slider-handle {
     width: 50px;
     height: 24px;
-    background: url('/wolf-img/slider.svg') no-repeat;
+    background: url('/wolf-img/Slider.svg') no-repeat;
     position: absolute;
-    margin-left: -20px;
-    margin-top: -5px;
+    margin-left: -19px;
+    margin-bottom: -12px;
+    
     cursor: pointer;
     outline: none;
 }
