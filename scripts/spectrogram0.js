@@ -28,18 +28,20 @@ function drawSpectrogram0(array) {
 function audioProcess0() {
     "use strict";
     // get the average for the first channel
-    var array = new Uint8Array(32);
+    var bin = analyserArray0[0].frequencyBinCount;
+    console.log(bin);
+    var array = new Uint8Array(bin);
     var sendArray = new Uint8Array(256);
     var j0 = 0;
     
     for(var j = 0; j < 256; j++){
         analyserArray0[j].getByteFrequencyData(array);
         var sum = 0;
-        for(var k = 0; k < 32; k++){
+        for(var k = 0; k < bin; k++){
             sum += array[k];
         }
         
-        sendArray[j0] = sum/8;
+        sendArray[j0] = sum/bin;
         j0++;
     }
     
@@ -99,7 +101,7 @@ for(var j = logStart0; j < logEnd0 + (stepFunc0/2); j+=stepFunc0){
     gainNode0.connect(FilterArray0[arrayNum0]);
     arrayNum0++;
 }
-console.log(arrayNum0);
+//console.log(arrayNum0);
 
 analyserArray0 = new Array(256);
 
