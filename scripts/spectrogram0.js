@@ -38,10 +38,13 @@ function audioProcess0() {
         analyserArray0[j].getByteFrequencyData(array);
         var sum = 0;
         for(var k = 0; k < bin; k++){
-            sum += array[k];
+            sum += Math.pow(10, array[k]/10) / 1000;
         }
-        
-        sendArray[j0] = sum/bin;
+        sum = sum / bin;
+        sum = sum * 1000;
+        sum = Math.log10(sum);
+        sum = sum * 10;
+        sendArray[j0] = sum;
         j0++;
     }
     
@@ -98,6 +101,7 @@ for(var j = logStart0; j < logEnd0 + (stepFunc0/2); j+=stepFunc0){
     FilterArray0[arrayNum0].type = "bandpass";
     FilterArray0[arrayNum0].frequency.value = freqCenter;
     FilterArray0[arrayNum0].Q.value = freqCenter / (freqTop - Math.pow(10, j));
+    console.log(FilterArray0[arrayNum0].Q.value);
     gainNode0.connect(FilterArray0[arrayNum0]);
     arrayNum0++;
 }
