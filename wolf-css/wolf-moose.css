@@ -1,32 +1,52 @@
+@font-face {
+    font-family: futura;
+    src: url('/wolf-fonts/futura.ttf');
+}
+
 .intro-text {
-    padding-left: 60px;
-    padding-right: 60px;
-    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 15px;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 10px;
+    font-family: futura;
+    font-size: 50px;
+}
+.separator {
+    width: 85%;
+    border: 0px;
+    color: #000;
+    background-color: #000;
+    height: 2px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.labels {
+    font-family: futura;
+    text-align: center;
+    color: rgb(96, 56, 19);
 }
 .centered {
     margin: auto;
     display: block;
 }
-.btn-wolf {
+.sliderIcon {
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+}
+.wolf-label {
+    padding: 1px;
+    border: none;
+    height: 35px;
+    width: 72px;
+}
+
+.moose-label {
     padding: 1px;
     border: none;
     height: 28px;
     width: 73px;
-    background: url('/wolf-img/button_wolves.svg') no-repeat center;
-    background-color: transparent;
-}
-.btn-wolf:disabled {
-    background: url('/wolf-img/button_moose.svg') no-repeat center;
-}
-.btn-moose {
-    padding: 1px;
-    border: none;
-    height: 28px;
-    width: 73px;
-    background: url('/wolf-img/button_moose.svg') no-repeat center;
-    background-color: transparent;
 }
 .btn-env {
     padding: 1px;

@@ -1,7 +1,7 @@
 
 .player {
-    width: 14px;
-    height: 196px;    
+    width: 196px;
+    height: 18px;    
     position: relative;
     margin: 0 auto;
     top: -5px;
@@ -13,9 +13,9 @@
 
     margin: 0 auto;
     margin-top: 0px;
-    height: 196px;
-    width: 14px;
-    background: url('/wolf-img/Track.svg') no-repeat left ;
+    height: 13px;
+    width: 196px;
+    background: url('/wolf-img/FaderBar.png') no-repeat left ;
 }
 
 .volume .ui-slider-range-min {
@@ -25,12 +25,12 @@
 }
 
 .volume .ui-slider-handle {
-    width: 50px;
-    height: 24px;
-    background: url('/wolf-img/Slider.svg') no-repeat;
+    width: 15px;
+    height: 35px;
+    background: url('/wolf-img/Fader.png') no-repeat;
     position: absolute;
-    margin-left: -19px;
-    margin-bottom: -12px;
+    margin-left: -4px;
+    margin-top: -10px;
     
     cursor: pointer;
     outline: none;

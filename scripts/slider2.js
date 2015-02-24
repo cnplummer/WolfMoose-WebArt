@@ -4,7 +4,7 @@ $(document).ready(function() {
         min: 0,
         max: 100,
         value: 0,
-        orientation: "vertical",
+        orientation: "horizontal",
         animate: "true",
         slide: function(event, ui) {
         setVolume(ui.value / 10);
