@@ -2,6 +2,8 @@ var audioCtx,       //The context of the Web Audio API - neccesary for node
                     //linking
     gainNode0,       //The gain node, routed as: source => gainNode =>
                     //destination
+    gainNode1,
+    gainNode2,
     btnPlay,        //HTML button for "playing" source
     btnStop,        //HTML button for "pausing" source
     btnReset,       //HTML button for restarting the audio
@@ -9,6 +11,7 @@ var audioCtx,       //The context of the Web Audio API - neccesary for node
     source1,
     source0;         //The AudioNode that holds the audio output from the HTML
                     //audio source
+
     
 //plays the source audio
 function buttonPlay() {
@@ -37,6 +40,8 @@ function resetSource() {
     source1.mediaElement.currentTime = 0;
     source2.mediaElement.currentTime = 0;
 }
+
+
 
 //Create an audio context from the HTML5 audio source
 audioCtx = new window.AudioContext();
