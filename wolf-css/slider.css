@@ -1,10 +1,10 @@
-
 .player {
     width: 196px;
-    height: 18px;    
+    height: 17px;    
     position: relative;
     margin: 0 auto;
-    top: -5px;
+    display: inline-block;
+    padding-left: 6px;
     /* background: url('/Images/button_wolves.svg') no-repeat left top;*/
 }
 
@@ -29,7 +29,7 @@
     height: 35px;
     background: url('/wolf-img/Fader.png') no-repeat;
     position: absolute;
-    margin-left: -4px;
+    margin-left: -8px;
     margin-top: -10px;
     
     cursor: pointer;
