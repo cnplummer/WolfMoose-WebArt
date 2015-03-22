@@ -1,0 +1,250 @@
+@font-face {
+    font-family: futura;
+    src: url('/wolf-fonts/futura.ttf');
+}
+.fa {
+    color: rgb(96, 56, 19);
+}
+a.infoPopUp {
+    display: inline;
+    position: relative;
+}
+a.infoPopUp span{
+    position: absolute;
+    left: 20%;
+    width:300px;
+    padding: 6px;
+    background: rgb(66, 26, 10);
+    color: #fff;
+    font-family: Helvetica;
+/*    font-weight: 200;*/
+    text-align: left;
+    visibility: hidden;
+    border-radius: 3px;
+}
+a:hover.infoPopUp span{
+    transition-delay: .5s;
+    visibility: visible;
+    opacity: 0.9;
+    top: 40px;
+    z-index: 999;
+}
+.intro-text {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 15px;
+    text-align: center;
+    padding-top: 10px;
+    font-family: futura;
+    font-size: 50px;
+}
+.separator {
+    width: 85%;
+    border: 0px;
+    color: #000;
+    background-color: #000;
+    height: 2px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.btnSeparator {
+    color: rgb(96, 56, 19);
+    background-color: rgb(96, 56, 19);
+    height: 3px;
+    border: 0px;
+    width: 82%;
+    margin-left: 18%;
+}
+.btnSeparator.leftSep {
+    margin-left: auto;
+    margin-right: 18%;
+}
+.separatorBoxL {
+    border-right: 3px solid rgb(96, 56, 19);  
+}
+.separatorBoxR {
+    border-left: 3px solid rgb(96, 56, 19);  
+}
+.labels {
+    font-family: futura;
+    text-align: center;
+    color: rgb(96, 56, 19);
+}
+.centered {
+    margin: auto;
+    display: block;
+}
+.sliderContainer{
+    width: 252px;
+    height: 30px;
+}
+.sliderIconL {
+    height: 20px;
+    width: 12px;
+    margin-top: -12px;
+}
+.sliderIconR {
+    height: 23px;
+    width: 25px;
+    margin-top: -5px;
+    float: right;
+}
+/*
+.wolf-label {
+padding: 1px;
+border: none;
+height: 35px;
+width: 72px;
+}
+
+.moose-label {
+padding: 1px;
+border: none;
+height: 28px;
+width: 73px;
+}
+.btn-env {
+padding: 1px;
+border: none;
+height: 28px;
+width: 127px;
+background: url('/wolf-img/button_environment.svg') no-repeat center;
+background-color: transparent;
+}
+*/
+.btn-wrap {
+    width: 150px;
+}
+.btn-play {
+    padding: 1px;
+    border: none;
+    height: 50px;
+    width: 50px;
+    background: url('/wolf-img/Transport_Play.png') no-repeat center;
+    background-size: cover;
+    background-color: transparent;
+}
+.btn-pause {
+    padding: 1px;
+    border: none;
+    height: 40px;
+    width: 40px;
+    background: url('/wolf-img/Transport_Pause.png') no-repeat center;
+    background-size: cover;
+    background-color: transparent;
+    float: left;
+    margin-top: 5px;
+}
+.btn-stop {
+    padding: 1px;
+    border: none;
+    height: 40px;
+    width: 40px;
+    background: url('/wolf-img/Transport_Stop.png') no-repeat center;
+    background-size: cover;
+    background-color: transparent;
+    margin-top: 5px;
+    float: right;
+}
+
+/*
+Slide Show Carousel CSS
+*/
+.slideshow .carousel-inner{
+    height: 700px; 
+}
+.slideshow .carousel-inner > .item {
+
+}
+
+.slideshow .carousel-inner > .item > img {
+
+}
+
+.slideshow .carousel-control {
+    width: 10%;
+}
+
+
+/*
+All the CSS for background Carousel, have to override some new implementations of transforms
+in Bootstrap 3.3 in order to get opacity transitions to work properly 
+
+WHAT IS NEW IN 3.3: "Added transforms to improve carousel performance in modern browsers."
+now override the 3.3 new styles for modern browsers & apply opacity
+*/
+@media all and (transform-3d), (-webkit-transform-3d) {
+    .carousel-bkg .carousel-inner > .item.next,
+    .carousel-bkg .carousel-inner > .item.active.right {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    .carousel-bkg .carousel-inner > .item.prev,
+    .carousel-bkg .carousel-inner > .item.active.left {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    .carousel-bkg .carousel-inner > .item.next.left,
+    .carousel-bkg .carousel-inner > .item.prev.right,
+    .carousel-bkg .carousel-inner > .item.active {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/*
+Inner items for the background carousel
+*/
+.carousel-bkg { z-index: -99; }  /*keeps this behind all content */
+.carousel-bkg .item {
+    position: fixed; 
+    width: 100%; height: 100%;
+    -webkit-transition: opacity 3s;
+    -moz-transition: opacity 3s;
+    -ms-transition: opacity 3s;
+    -o-transition: opacity 3s;
+    transition: opacity 3s;
+    /*    -webkit-filter: blur(5px);*/
+    /*
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+    */
+    -webkit-filter: grayscale(0.4) opacity(0.6) blur(3px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+
+}
+.carousel-bkg .one {
+    background: url(/wolf-img/Bkg.png);
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-filter: grayscale(0.4) opacity(0.6) blur(1px);
+
+}
+.carousel-bkg .two {
+    background: url(/wolf-img/wolves/DSC00437.jpg);
+    background-size: cover;
+    -moz-background-size: cover;
+}
+.carousel-bkg .three {
+    background: url(/wolf-img/moose/DSCN1305.JPG);
+    background-size: cover;
+    -moz-background-size: cover;
+}
+.carousel-bkg .four {
+    background: url(/wolf-img/wolves&moose/DSC00616.JPG);
+    background-size: cover;
+    -moz-background-size: cover;
+}
+.carousel-bkg .active.left {
+    left:0;
+    opacity:0;
+    z-index:2;
+}
