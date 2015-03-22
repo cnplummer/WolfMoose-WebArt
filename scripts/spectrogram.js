@@ -41,7 +41,7 @@ function audioProcess(source, analyserArray, ctx, tempCtx, canvas, tempCanvas) {
     var sendArray = new Uint8Array(canvasHeight);
     var j0 = 0;
     for(var j = 0; j < canvasHeight; j++){
-        analyserArray[j].getByteFrequencyData(array);
+        analyserArray[Math.floor(j/2)].getByteFrequencyData(array);
         var sum = 0;
         for(var k = 0; k < bin; k++){
             sum += Math.pow(10, array[k]/10) / 1000;
@@ -72,7 +72,7 @@ function setupProcess(FilterArray, gainNode, analyserArray) {
         arrayNum++;
     }
     
-    for(var j = 0; j < canvasHeight; j++){
+    for(var j = 0; j < canvasHeight/2; j++){
         analyserArray[j] = audioCtx.createAnalyser();
         analyserArray[j].fftSize = 32;
         FilterArray[j].connect(analyserArray[j]);
@@ -104,7 +104,7 @@ spectroMax   = Math.log10(20000);
 spectroMin   = Math.log10(20);
 canvasHeight = 256;
 canvasWidth  = 400;
-stepFunc     = (spectroMax-spectroMin) / canvasHeight
+stepFunc     = (spectroMax-spectroMin) / (canvasHeight/2)
 
 
 
@@ -146,13 +146,13 @@ javascriptNode1.connect(audioCtx.destination);
 javascriptNode2.connect(audioCtx.destination);
 
 // Generating a data set for spectrogram from log.
-FilterArray0 = new Array(canvasHeight);
-FilterArray1 = new Array(canvasHeight);
-FilterArray2 = new Array(canvasHeight);
+FilterArray0 = new Array(canvasHeight/2);
+FilterArray1 = new Array(canvasHeight/2);
+FilterArray2 = new Array(canvasHeight/2);
 
-analyserArray0 = new Array(canvasHeight);
-analyserArray1 = new Array(canvasHeight);
-analyserArray2 = new Array(canvasHeight);
+analyserArray0 = new Array(canvasHeight/2);
+analyserArray1 = new Array(canvasHeight/2);
+analyserArray2 = new Array(canvasHeight/2);
 
 setupProcess(FilterArray0,gainNode0,analyserArray0);
 setupProcess(FilterArray1,gainNode1,analyserArray1);
