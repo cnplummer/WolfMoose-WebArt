@@ -2,7 +2,33 @@
     font-family: futura;
     src: url('/wolf-fonts/futura.ttf');
 }
-
+.fa {
+    color: rgb(96, 56, 19);
+}
+a.infoPopUp {
+    display: inline;
+    position: relative;
+}
+a.infoPopUp span{
+    position: absolute;
+    left: 20%;
+    width:300px;
+    padding: 6px;
+    background: rgb(66, 26, 10);
+    color: #fff;
+    font-family: Helvetica;
+/*    font-weight: 200;*/
+    text-align: left;
+    visibility: hidden;
+    border-radius: 3px;
+}
+a:hover.infoPopUp span{
+    transition-delay: .5s;
+    visibility: visible;
+    opacity: 0.9;
+    top: 40px;
+    z-index: 999;
+}
 .intro-text {
     padding-left: 10px;
     padding-right: 10px;
@@ -20,6 +46,24 @@
     height: 2px;
     margin-top: 0px;
     margin-bottom: 0px;
+}
+.btnSeparator {
+    color: rgb(96, 56, 19);
+    background-color: rgb(96, 56, 19);
+    height: 3px;
+    border: 0px;
+    width: 82%;
+    margin-left: 18%;
+}
+.btnSeparator.leftSep {
+    margin-left: auto;
+    margin-right: 18%;
+}
+.separatorBoxL {
+    border-right: 3px solid rgb(96, 56, 19);  
+}
+.separatorBoxR {
+    border-left: 3px solid rgb(96, 56, 19);  
 }
 .labels {
     font-family: futura;
@@ -47,55 +91,59 @@
 }
 /*
 .wolf-label {
-    padding: 1px;
-    border: none;
-    height: 35px;
-    width: 72px;
+padding: 1px;
+border: none;
+height: 35px;
+width: 72px;
 }
 
 .moose-label {
-    padding: 1px;
-    border: none;
-    height: 28px;
-    width: 73px;
+padding: 1px;
+border: none;
+height: 28px;
+width: 73px;
 }
 .btn-env {
-    padding: 1px;
-    border: none;
-    height: 28px;
-    width: 127px;
-    background: url('/wolf-img/button_environment.svg') no-repeat center;
-    background-color: transparent;
+padding: 1px;
+border: none;
+height: 28px;
+width: 127px;
+background: url('/wolf-img/button_environment.svg') no-repeat center;
+background-color: transparent;
 }
 */
+.btn-wrap {
+    width: 150px;
+}
 .btn-play {
     padding: 1px;
     border: none;
-    height: 40px;
-    width: 40px;
-    background: url('/wolf-img/Trans_Play.svg') no-repeat center;
+    height: 50px;
+    width: 50px;
+    background: url('/wolf-img/Transport_Play.png') no-repeat center;
     background-size: cover;
     background-color: transparent;
-    float: left;
 }
 .btn-pause {
     padding: 1px;
     border: none;
     height: 40px;
     width: 40px;
-    background: url('/wolf-img/Trans_Pause.svg') no-repeat center;
+    background: url('/wolf-img/Transport_Pause.png') no-repeat center;
     background-size: cover;
     background-color: transparent;
+    float: left;
+    margin-top: 5px;
 }
 .btn-stop {
     padding: 1px;
     border: none;
     height: 40px;
     width: 40px;
-    background: url('/wolf-img/Trans_Stop.svg') no-repeat center;
+    background: url('/wolf-img/Transport_Stop.png') no-repeat center;
     background-size: cover;
     background-color: transparent;
-    margin-left: 0px;
+    margin-top: 5px;
     float: right;
 }
 
