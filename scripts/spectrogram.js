@@ -1,15 +1,22 @@
-var spectroMax,
-    spectroMin,
-    stepFunc,
-    canvasHeight,
-    canvasWidth,
-    canvas0,        canvas1,        canvas2,
-    ctx0,           ctx1,           ctx2,
-    tempCanvas0,    tempCanvas1,    tempCanvas2,
-    tempCtx0,       tempCtx1,       tempCtx2,
-    javascriptNode0,javascriptNode1,javascriptNode2,
-    FilterArray0,   FilterArray1,   FilterArray2,
-    analyserArray0, analyserArray1, analyserArray2;
+/**
+ * Sets up the spectrograms.
+ *
+ * @author Matthew Vaught
+ *         mtvaught@mtu.edu
+ */
+
+var spectroMax,     //Max frequency of spectrogram
+    spectroMin,     //Min frequency of spectrogram
+    stepFunc,       //Used to determine the log steps between max and min
+    canvasHeight,   //Height of graphics canvas
+    canvasWidth,    //Width of graphics canvas
+    canvas0,        canvas1,        canvas2,        //Canvas to draw on
+    ctx0,           ctx1,           ctx2,           //Context from canvas
+    tempCanvas0,    tempCanvas1,    tempCanvas2,    //Temp canvas to generate
+    tempCtx0,       tempCtx1,       tempCtx2,       //Context from temp canvas
+    javascriptNode0,javascriptNode1,javascriptNode2,//Triggers actions on audio
+    FilterArray0,   FilterArray1,   FilterArray2,   //Array of biquad filters
+    analyserArray0, analyserArray1, analyserArray2; //Array of analysers
 
 
 function drawSpectrogram(array, ctx, tempCtx, canvas, tempCanvas) {
@@ -71,7 +78,7 @@ function setupProcess(FilterArray, gainNode, analyserArray) {
         gainNode.connect(FilterArray[arrayNum]);
         arrayNum++;
     }
-    
+
     for(var j = 0; j < canvasHeight; j++){
         analyserArray[j] = audioCtx.createAnalyser();
         analyserArray[j].fftSize = 32;
@@ -93,6 +100,12 @@ function audioProcess2() {
     audioProcess(source2, analyserArray2, ctx2, tempCtx2, canvas2, tempCanvas2);
 }
 
+//Explicit Defined Vars
+spectroMax   = Math.log10(20000);   //Max frequency
+spectroMin   = Math.log10(20);      //Min frequency
+canvasHeight = 256;                 //Spectro Height
+canvasWidth  = 400;                 //Spectro Width
+
 // used for color distribution
 hot = new chroma.ColorScale({
     colors: ['#000000', '#ff0000', '#ffff00', '#ffffff'],
@@ -100,13 +113,8 @@ hot = new chroma.ColorScale({
     mode: 'rgb',
     limits: [0, 300]
 });
-spectroMax   = Math.log10(20000);
-spectroMin   = Math.log10(20);
-canvasHeight = 256;
-canvasWidth  = 400;
-stepFunc     = (spectroMax-spectroMin) / canvasHeight
 
-
+stepFunc = (spectroMax-spectroMin) / canvasHeight
 
 //pull the canvas into a variable
 canvas0 = document.getElementById("canvas0");
@@ -123,14 +131,17 @@ tempCanvas0 = document.createElement("canvas");
 tempCanvas1 = document.createElement("canvas");
 tempCanvas2 = document.createElement("canvas");
 
+// create a temp context from the tempCanvas
 tempCtx0 = tempCanvas0.getContext("2d");
 tempCtx1 = tempCanvas1.getContext("2d");
 tempCtx2 = tempCanvas2.getContext("2d");
 
+// set the widths
 tempCanvas0.width = canvasWidth;
 tempCanvas1.width = canvasWidth;
 tempCanvas2.width = canvasWidth;
 
+// set the heights
 tempCanvas0.height = canvasHeight;
 tempCanvas1.height = canvasHeight;
 tempCanvas2.height = canvasHeight;
@@ -150,18 +161,22 @@ FilterArray0 = new Array(canvasHeight);
 FilterArray1 = new Array(canvasHeight);
 FilterArray2 = new Array(canvasHeight);
 
+// Generate a analyser for each segment of the filters
 analyserArray0 = new Array(canvasHeight);
 analyserArray1 = new Array(canvasHeight);
 analyserArray2 = new Array(canvasHeight);
 
+// initialize connections for spectrograms
 setupProcess(FilterArray0,gainNode0,analyserArray0);
 setupProcess(FilterArray1,gainNode1,analyserArray1);
 setupProcess(FilterArray2,gainNode2,analyserArray2);
 
+// connect spectrogram initial node to audio source
 gainNode0.connect(javascriptNode0);
 gainNode1.connect(javascriptNode1);
 gainNode2.connect(javascriptNode2);
 
+// connect the audio signal to trigger audioProcess
 javascriptNode0.onaudioprocess = audioProcess0;
 javascriptNode1.onaudioprocess = audioProcess1;
 javascriptNode2.onaudioprocess = audioProcess2;
