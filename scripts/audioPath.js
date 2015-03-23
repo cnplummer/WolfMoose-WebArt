@@ -1,7 +1,16 @@
-var audioCtx,       //The context of the Web Audio API - neccesary for node 
+/**
+ * Sets up the audio path to the spectrogram.
+ *
+ * @author Matthew Vaught
+ *         mtvaught@mtu.edu
+ */
+
+var audioCtx,       //The context of the Web Audio API - neccesary for node
                     //linking
     gainNode0,       //The gain node, routed as: source => gainNode =>
                     //destination
+    gainNode1,
+    gainNode2,
     btnPlay,        //HTML button for "playing" source
     btnStop,        //HTML button for "pausing" source
     btnReset,       //HTML button for restarting the audio
@@ -13,7 +22,8 @@ var audioCtx,       //The context of the Web Audio API - neccesary for node
     source1,
     source0;         //The AudioNode that holds the audio output from the HTML
                     //audio source
-    
+
+
 //plays the source audio
 function buttonPlay() {
     "use strict";
@@ -100,3 +110,4 @@ gainNode2.gain.value = 0;
 //Play all tracks initially
 buttonPlay();
 
+btnStop.disabled = true;
