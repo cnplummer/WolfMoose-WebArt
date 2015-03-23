@@ -10,6 +10,7 @@ var spectroMax,     //Max frequency of spectrogram
     stepFunc,       //Used to determine the log steps between max and min
     canvasHeight,   //Height of graphics canvas
     canvasWidth,    //Width of graphics canvas
+    graphicQuality, //Number of pixels per analysis
     canvas0,        canvas1,        canvas2,        //Canvas to draw on
     ctx0,           ctx1,           ctx2,           //Context from canvas
     tempCanvas0,    tempCanvas1,    tempCanvas2,    //Temp canvas to generate
@@ -48,7 +49,9 @@ function audioProcess(source, analyserArray, ctx, tempCtx, canvas, tempCanvas) {
     var sendArray = new Uint8Array(canvasHeight);
     var j0 = 0;
     for(var j = 0; j < canvasHeight; j++){
-        analyserArray[Math.floor(j/2)].getByteFrequencyData(array);
+        var jj = Math.floor(j/graphicQuality);
+        if ( jj >= arraySize ) jj = arraySize - 1;
+        analyserArray[jj].getByteFrequencyData(array);
         var sum = 0;
         for(var k = 0; k < bin; k++){
             sum += Math.pow(10, array[k]/10) / 1000;
@@ -79,7 +82,7 @@ function setupProcess(FilterArray, gainNode, analyserArray) {
         arrayNum++;
     }
 
-    for(var j = 0; j < canvasHeight/2; j++){
+    for(var j = 0; j < arraySize; j++){
         analyserArray[j] = audioCtx.createAnalyser();
         analyserArray[j].fftSize = 32;
         FilterArray[j].connect(analyserArray[j]);
@@ -100,11 +103,19 @@ function audioProcess2() {
     audioProcess(source2, analyserArray2, ctx2, tempCtx2, canvas2, tempCanvas2);
 }
 
+function setGraphicQuality ( pixelsPerData ) {
+    graphicQuality = pixelsPerData;
+    location.reload();
+}
+
 //Explicit Defined Vars
 spectroMax   = Math.log10(20000);   //Max frequency
 spectroMin   = Math.log10(20);      //Min frequency
 canvasHeight = 256;                 //Spectro Height
 canvasWidth  = 400;                 //Spectro Width
+graphicQuality = 1;
+arraySize = Math.floor(canvasHeight / graphicQuality);
+stepFunc = (spectroMax-spectroMin) / (arraySize);
 
 // used for color distribution
 hot = new chroma.ColorScale({
@@ -113,8 +124,6 @@ hot = new chroma.ColorScale({
     mode: 'rgb',
     limits: [0, 300]
 });
-
-stepFunc = (spectroMax-spectroMin) / (canvasHeight/2);
 
 //pull the canvas into a variable
 canvas0 = document.getElementById("canvas0");
@@ -157,14 +166,14 @@ javascriptNode1.connect(audioCtx.destination);
 javascriptNode2.connect(audioCtx.destination);
 
 // Generating a data set for spectrogram from log.
-FilterArray0 = new Array(canvasHeight/2);
-FilterArray1 = new Array(canvasHeight/2);
-FilterArray2 = new Array(canvasHeight/2);
+FilterArray0 = new Array(arraySize);
+FilterArray1 = new Array(arraySize);
+FilterArray2 = new Array(arraySize);
 
 // Generate a analyser for each segment of the filters
-analyserArray0 = new Array(canvasHeight/2);
-analyserArray1 = new Array(canvasHeight/2);
-analyserArray2 = new Array(canvasHeight/2);
+analyserArray0 = new Array(arraySize);
+analyserArray1 = new Array(arraySize);
+analyserArray2 = new Array(arraySize);
 
 // initialize connections for spectrograms
 setupProcess(FilterArray0,gainNode0,analyserArray0);
