@@ -1,8 +1,8 @@
 $(document).ready(function() {
 
     $(".slider4").slider({
-        min: 0,
-        max: 100,
+        min: 1,
+        max: 4,
         value: 0,
         orientation: "horizontal",
         animate: "true",
@@ -10,9 +10,5 @@ $(document).ready(function() {
         setGraphics(ui.value/20 + 1);
         }
     });
-    
-    function setGraphics(newQuality) {
-    graphicQuality = newQuality;
-    };
 });
 
