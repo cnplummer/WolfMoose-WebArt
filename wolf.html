@@ -142,14 +142,14 @@
                 <div class="col-lg-2" style="padding-left:5px; padding-right:5px">
                     <a class="infoPopUp" >
                         <i class="fa fa-2x pull-left fa-info-circle" style="margin-top:10px"></i>
-                         <span>Move the faders above to the right to bring up the volume of each different
-                             data set sonification. See if you can hear and see the data patterns in the music! 
+                        <span>Move the faders above to the right to bring up the volume of each different
+                            data set sonification. See if you can hear and see the data patterns in the music! 
                         </span>
                     </a>
                     <a class="infoPopUp">
                         <i class="fa fa-2x pull-right fa-info-circle" style="margin-top:10px"></i>
-                         <span>Use the transport control to pause, play, and stop the generative music. The stop button
-                             will restart the music from the beginning.
+                        <span>Use the transport control to pause, play, and stop the generative music. The stop button
+                            will restart the music from the beginning.
                         </span>
                     </a>
                     <div class="btn-wrap centered">
@@ -162,7 +162,21 @@
                     <hr class="btnSeparator leftSep" style="margin-top:23px">
                 </div>
             </div>
-
+            
+<!--            Graphics Quality Slider-->
+            <div  class="row" style="padding-bottom:30px">
+                <div class="col-lg-12">
+                    <div class="sliderContainer centered">
+                        <img src="/wolf-img/SPK_Mute.png" class="sliderIconL">
+                        <div class="player">
+                            <div class="volume slider4"></div>
+                        </div>
+                        <img src="/wolf-img/SPK_Loud.png" class="sliderIconR">
+                    </div>
+                </div>
+            </div>
+            
+<!--            Slideshow #1-->
             <div  class="row" style="padding-bottom:30px">
                 <div class="col-lg-8 col-lg-offset-2">
                     <div id="slideShow" class="carousel slideshow" data-ride="carousel">
@@ -280,6 +294,7 @@
         <script type="text/javascript" src="/scripts/slider1.js"></script>
         <script type="text/javascript" src="/scripts/slider2.js"></script>
         <script type="text/javascript" src="/scripts/slider3.js"></script>
+        <script type="text/javascript" src="/scripts/slider4.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
                 $('#bkgCarousel').carousel({interval: 25000});
