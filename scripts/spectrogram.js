@@ -60,7 +60,7 @@ function audioProcess(source, analyserArray, ctx, tempCtx, canvas, tempCanvas) {
         j0++;
     }
     // draw the spectrogram
-    if (!source.mediaElement.paused) {
+    if (!source.paused) {
         drawSpectrogram(sendArray, ctx, tempCtx, canvas, tempCanvas);
     }
 }
@@ -113,7 +113,7 @@ spectroMax   = Math.log10(20000);   //Max frequency
 spectroMin   = Math.log10(20);      //Min frequency
 canvasHeight = 256;                 //Spectro Height
 canvasWidth  = 400;                 //Spectro Width
-graphicQuality = 1;
+graphicQuality = 5;
 arraySize = Math.floor(canvasHeight / graphicQuality);
 stepFunc = (spectroMax-spectroMin) / (arraySize);
 

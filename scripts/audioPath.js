@@ -20,54 +20,24 @@ var audioCtx,       //The context of the Web Audio API - neccesary for node
     slider1,
     source2,
     source1,
-    source0;         //The AudioNode that holds the audio output from the HTML
+    source0,
+    media0,
+    media1,
+    media2;         //The AudioNode that holds the audio output from the HTML
                     //audio source
-
-
-//plays the source audio
-function buttonPlay() {
-    "use strict";
-    source0.mediaElement.play();
-    source1.mediaElement.play();
-    source2.mediaElement.play();
-    btnPlay.disabled = true;
-    btnStop.disabled = false;
-    btnReset.disabled = false;
-}
-
-//pauses the source audio
-function buttonPause() {
-    "use strict";
-    source0.mediaElement.pause();
-    source1.mediaElement.pause();
-    source2.mediaElement.pause();
-    btnPlay.disabled = false;
-    btnStop.disabled = true;
-    btnReset.disabled = false;
-}
-
-//resets the audio source to the beginning
-function resetSource() {
-    "use strict";
-    source0.mediaElement.currentTime = 0;
-    source1.mediaElement.currentTime = 0;
-    source2.mediaElement.currentTime = 0;
-    source0.mediaElement.pause();
-    source1.mediaElement.pause();
-    source2.mediaElement.pause();
-    btnReset.disabled = true;
-    btnPlay.disabled = false;
-    btnStop.disabled = true;
-}
 
 
 //Create an audio context from the HTML5 audio source
 audioCtx = new window.AudioContext();
-
+console.log(document.getElementById("srcWolf"));
 source0 = audioCtx.createMediaElementSource(document.getElementById("srcWolf"));
 source1 = audioCtx.createMediaElementSource(document.getElementById("srcMoose"));
 source2 = audioCtx.createMediaElementSource(document.getElementById("srcEnv"));
+media0 = document.getElementById("srcWolf");
+media1 = document.getElementById("srcMoose");
+media2 = document.getElementById("srcEnv");
 console.log(source0);
+
 //Define Nodes to be connected
 gainNode0 = audioCtx.createGain();
 gainNode1 = audioCtx.createGain();
@@ -91,7 +61,42 @@ btnWolf = document.getElementById("btn-wolf");
 btnMoose = document.getElementById("btn-moose");
 btnEnv = document.getElementById("btn-env");
 slider1 = $(".slider1");
-console.log(slider1);
+
+//plays the source audio
+function buttonPlay() {
+    "use strict";
+    media0.play();
+    media1.play();
+    media2.play();
+    btnPlay.disabled = true;
+    btnStop.disabled = false;
+    btnReset.disabled = false;
+}
+
+//pauses the source audio
+function buttonPause() {
+    "use strict";
+    media0.pause();
+    media1.pause();
+    media2.pause();
+    btnPlay.disabled = false;
+    btnStop.disabled = true;
+    btnReset.disabled = false;
+}
+
+//resets the audio source to the beginning
+function resetSource() {
+    "use strict";
+    media0.currentTime = 0;
+    media1.currentTime = 0;
+    media2.currentTime = 0;
+    media0.pause();
+    media1.pause();
+    media2.pause();
+    btnReset.disabled = true;
+    btnPlay.disabled = false;
+    btnStop.disabled = true;
+}
 
 btnPlay.onclick = buttonPlay;
 btnStop.onclick = buttonPause;
