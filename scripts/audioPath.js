@@ -67,7 +67,7 @@ audioCtx = new window.AudioContext();
 source0 = audioCtx.createMediaElementSource(document.getElementById("srcWolf"));
 source1 = audioCtx.createMediaElementSource(document.getElementById("srcMoose"));
 source2 = audioCtx.createMediaElementSource(document.getElementById("srcEnv"));
-console.log(source0);
+
 //Define Nodes to be connected
 gainNode0 = audioCtx.createGain();
 gainNode1 = audioCtx.createGain();
@@ -91,7 +91,6 @@ btnWolf = document.getElementById("btn-wolf");
 btnMoose = document.getElementById("btn-moose");
 btnEnv = document.getElementById("btn-env");
 slider1 = $(".slider1");
-console.log(slider1);
 
 btnPlay.onclick = buttonPlay;
 btnStop.onclick = buttonPause;
