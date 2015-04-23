@@ -36,7 +36,6 @@ source2 = audioCtx.createMediaElementSource(document.getElementById("srcEnv"));
 media0 = document.getElementById("srcWolf");
 media1 = document.getElementById("srcMoose");
 media2 = document.getElementById("srcEnv");
-console.log(source0);
 
 //Define Nodes to be connected
 gainNode0 = audioCtx.createGain();
