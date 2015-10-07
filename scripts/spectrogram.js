@@ -43,19 +43,31 @@ function drawSpectrogram(array, ctx, tempCtx, canvas, tempCanvas) {
     ctx.setTransform(1, 0, 0, 1, 0, 0);
 }
 
+/**
+* Generic function that is triggered on an audio process. It is called from one
+* of three specific spectrogram onAudioProcess function, that pass in the
+* appropriate variables.
+*/
 function audioProcess(source, analyserArray, ctx, tempCtx, canvas, tempCanvas) {
+    //Create an array to hold the data from each analyser
     var bin = analyserArray[0].frequencyBinCount;
     var array = new Uint8Array(bin);
     var sendArray = new Uint8Array(canvasHeight);
-    var j0 = 0;
+    var j0 = 0; //The index corresponding to the pixel on the canvas
+    //Loops through every pixel on the canvas
     for(var j = 0; j < canvasHeight; j++){
+        //Determine if a pixel is rendered using a previous analyser
         var jj = Math.floor(j/graphicQuality);
+        //ensure that the calculated index is not out of bounds
         if ( jj >= arraySize ) jj = arraySize - 1;
         analyserArray[jj].getByteFrequencyData(array);
+        //Convert each bin's dB value into a linear scale, then add them
+        //together
         var sum = 0;
         for(var k = 0; k < bin; k++){
             sum += Math.pow(10, array[k]/10) / 1000;
         }
+        //Convert back into dB
         sendArray[j0] = Math.log10(sum / bin * 1000) * 10;
         j0++;
     }
@@ -65,6 +77,10 @@ function audioProcess(source, analyserArray, ctx, tempCtx, canvas, tempCanvas) {
     }
 }
 
+/**
+* Generic initializer for a single spectrogram. Links the filters with their
+* analysers.
+*/
 function setupProcess(FilterArray, gainNode, analyserArray) {
     "use strict";
     var arrayNum = 0;
@@ -89,7 +105,7 @@ function setupProcess(FilterArray, gainNode, analyserArray) {
     }
 }
 
-//function called by the javascript node
+//functions called by the javascript node
 function audioProcess0() {
     "use strict";
     audioProcess(source0, analyserArray0, ctx0, tempCtx0, canvas0, tempCanvas0);
@@ -103,9 +119,79 @@ function audioProcess2() {
     audioProcess(source2, analyserArray2, ctx2, tempCtx2, canvas2, tempCanvas2);
 }
 
+/**
+* Performs the initial setup of the spectrogram's analysis tools. Depends on 
+* canvasHeight, graphicQuality, spectroMax, spectroMin. Is called upon page
+* load, and on a new graphicQuality
+*/
+function initializeVariables() {
+    arraySize = Math.floor(canvasHeight / graphicQuality);
+    stepFunc = (spectroMax-spectroMin) / (arraySize);
+    
+    // connect to destination, else it isn't called
+    javascriptNode0.connect(audioCtx.destination);
+    javascriptNode1.connect(audioCtx.destination);
+    javascriptNode2.connect(audioCtx.destination);
+
+    // Generating a data set for spectrogram from log.
+    FilterArray0 = new Array(arraySize);
+    FilterArray1 = new Array(arraySize);
+    FilterArray2 = new Array(arraySize);
+
+    // Generate a analyser for each segment of the filters
+    analyserArray0 = new Array(arraySize);
+    analyserArray1 = new Array(arraySize);
+    analyserArray2 = new Array(arraySize);
+
+    // initialize connections for spectrograms
+    setupProcess(FilterArray0,gainNode0,analyserArray0);
+    setupProcess(FilterArray1,gainNode1,analyserArray1);
+    setupProcess(FilterArray2,gainNode2,analyserArray2);
+
+    // connect the audio signal to trigger audioProcess
+    javascriptNode0.onaudioprocess = audioProcess0;
+    javascriptNode1.onaudioprocess = audioProcess1;
+    javascriptNode2.onaudioprocess = audioProcess2;
+}
+
+/**
+* Sets how many pixels are assigned to a single analyser. For highest quality,
+* pick a value of 1. There is (in theory) no size limit to the number, although
+* it has only been verified up to (and including) 4.
+*/
 function setGraphicQuality ( pixelsPerData ) {
-    graphicQuality = pixelsPerData;
-    location.reload();
+    //In order to avoid having a memory leak and double analyser occuring, all
+    // of the spectrogram's parts need to be reset. To do this, they must first
+    // be erased.
+    javascriptNode0.onaudioprocess = null;
+    javascriptNode1.onaudioprocess = null;
+    javascriptNode2.onaudioprocess = null;
+    javascriptNode0.disconnect();
+    javascriptNode1.disconnect();
+    javascriptNode2.disconnect();
+    
+    for( var i = 0; i < analyserArray0.length; i++ ) {
+        analyserArray0[i].disconnect();
+        analyserArray1[i].disconnect();
+        analyserArray2[i].disconnect();
+        analyserArray0[i] = null;
+        analyserArray1[i] = null;
+        analyserArray2[i] = null;
+        FilterArray0[i].disconnect();
+        FilterArray1[i].disconnect();
+        FilterArray2[i].disconnect();
+        FilterArray0[i] = null;
+        FilterArray1[i] = null;
+        FilterArray2[i] = null;
+    }
+    //The javascript garbage collecter at this point will deallocate any
+    //memory associated with the previous graphics level.
+    
+    //Ensure that number passed in is a whole number greater than 0.
+    graphicQuality = Math.ceil( pixelsPerData );
+    
+    //Reinitialize all variables with new graphics quality.
+    initializeVariables();
 }
 
 //Explicit Defined Vars
@@ -114,8 +200,6 @@ spectroMin   = Math.log10(20);      //Min frequency
 canvasHeight = 256;                 //Spectro Height
 canvasWidth  = 400;                 //Spectro Width
 graphicQuality = 1;
-arraySize = Math.floor(canvasHeight / graphicQuality);
-stepFunc = (spectroMax-spectroMin) / (arraySize);
 
 // used for color distribution
 hot = new chroma.ColorScale({
@@ -160,32 +244,9 @@ javascriptNode0 = audioCtx.createScriptProcessor(2048, 1, 1);
 javascriptNode1 = audioCtx.createScriptProcessor(2048, 1, 1);
 javascriptNode2 = audioCtx.createScriptProcessor(2048, 1, 1);
 
-// connect to destination, else it isn't called
-javascriptNode0.connect(audioCtx.destination);
-javascriptNode1.connect(audioCtx.destination);
-javascriptNode2.connect(audioCtx.destination);
-
-// Generating a data set for spectrogram from log.
-FilterArray0 = new Array(arraySize);
-FilterArray1 = new Array(arraySize);
-FilterArray2 = new Array(arraySize);
-
-// Generate a analyser for each segment of the filters
-analyserArray0 = new Array(arraySize);
-analyserArray1 = new Array(arraySize);
-analyserArray2 = new Array(arraySize);
-
-// initialize connections for spectrograms
-setupProcess(FilterArray0,gainNode0,analyserArray0);
-setupProcess(FilterArray1,gainNode1,analyserArray1);
-setupProcess(FilterArray2,gainNode2,analyserArray2);
+initializeVariables();
 
 // connect spectrogram initial node to audio source
 gainNode0.connect(javascriptNode0);
 gainNode1.connect(javascriptNode1);
 gainNode2.connect(javascriptNode2);
-
-// connect the audio signal to trigger audioProcess
-javascriptNode0.onaudioprocess = audioProcess0;
-javascriptNode1.onaudioprocess = audioProcess1;
-javascriptNode2.onaudioprocess = audioProcess2;
