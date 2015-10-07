@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
     $(".slider2").slider({
         min: 0,
         max: 100,
@@ -10,11 +9,7 @@ $(document).ready(function() {
         setVolume(ui.value / 10);
         }
     });
-    
     function setVolume(myGain) {
     gainNode1.gain.value = myGain;
     };
-
 });
-
-
