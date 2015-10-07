@@ -51,7 +51,7 @@ function audioProcess(source, analyser, ctx, tempCtx, canvas, tempCanvas) {
     analyser.getByteFrequencyData(array);
     // draw the spectrogram
     if (!source.paused) {
-        drawSpectrogram(sendArray, ctx, tempCtx, canvas, tempCanvas);
+        drawSpectrogram(array, ctx, tempCtx, canvas, tempCanvas);
     }
 }
 
@@ -112,7 +112,6 @@ function initializeVariables() {
 
 canvasHeight = 256;                 //Spectro Height
 canvasWidth  = 400;                 //Spectro Width
-graphicQuality = 1;
 
 // used for color distribution
 hot = new chroma.ColorScale({
