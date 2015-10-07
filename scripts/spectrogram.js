@@ -44,13 +44,13 @@ function drawSpectrogram(array, ctx, tempCtx, canvas, tempCanvas) {
 * of three specific spectrogram onAudioProcess function, that pass in the
 * appropriate variables.
 */
-function audioProcess(source, analyser, ctx, tempCtx, canvas, tempCanvas) {
+function audioProcess(source, analyser, ctx, tempCtx, canvas, tempCanvas, media) {
     //Create an array to hold the data from each analyser
     var binCount = analyser.frequencyBinCount;
     var array = new Uint8Array(binCount);
     analyser.getByteFrequencyData(array);
     // draw the spectrogram
-    if (!source.paused) {
+    if (!media.paused) {
         drawSpectrogram(array, ctx, tempCtx, canvas, tempCanvas);
     }
 }
@@ -63,37 +63,37 @@ function setupProcess(gainNode, analyser) {
     "use strict";
     analyser.smoothingTimeConstant = 0;
     analyser.fftSize = 1024;
-    
+
     gainNode.connect(analyser);
 }
 
 //functions called by the javascript node
 function audioProcess0() {
     "use strict";
-    audioProcess(source0, analyser0, ctx0, tempCtx0, canvas0, tempCanvas0);
+    audioProcess(source0, analyser0, ctx0, tempCtx0, canvas0, tempCanvas0, media0);
 }
 function audioProcess1() {
     "use strict";
-    audioProcess(source1, analyser1, ctx1, tempCtx1, canvas1, tempCanvas1);
+    audioProcess(source1, analyser1, ctx1, tempCtx1, canvas1, tempCanvas1, media1);
 }
 function audioProcess2() {
     "use strict";
-    audioProcess(source2, analyser2, ctx2, tempCtx2, canvas2, tempCanvas2);
+    audioProcess(source2, analyser2, ctx2, tempCtx2, canvas2, tempCanvas2, media2);
 }
 
 /**
-* Performs the initial setup of the spectrogram's analysis tools. Depends on 
+* Performs the initial setup of the spectrogram's analysis tools. Depends on
 * canvasHeight, graphicQuality, spectroMax, spectroMin. Is called upon page
 * load, and on a new graphicQuality
 */
 function initializeVariables() {
-    
+
     // connect to destination, else it isn't called
     javascriptNode0.connect(audioCtx.destination);
     javascriptNode1.connect(audioCtx.destination);
     javascriptNode2.connect(audioCtx.destination);
 
-    
+
     // Generate a analyser for each segment of the filters
     analyser0 = audioCtx.createAnalyser();
     analyser1 = audioCtx.createAnalyser();

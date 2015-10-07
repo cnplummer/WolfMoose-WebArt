@@ -29,13 +29,14 @@ var audioCtx,       //The context of the Web Audio API - neccesary for node
 
 //Create an audio context from the HTML5 audio source
 audioCtx = new window.AudioContext();
-console.log(document.getElementById("srcWolf"));
 source0 = audioCtx.createMediaElementSource(document.getElementById("srcWolf"));
 source1 = audioCtx.createMediaElementSource(document.getElementById("srcMoose"));
 source2 = audioCtx.createMediaElementSource(document.getElementById("srcEnv"));
 media0 = document.getElementById("srcWolf");
 media1 = document.getElementById("srcMoose");
 media2 = document.getElementById("srcEnv");
+console.log(source0);
+console.log(media0);
 
 //Define Nodes to be connected
 gainNode0 = audioCtx.createGain();
