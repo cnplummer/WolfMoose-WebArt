@@ -64,9 +64,9 @@ function resetSource() {
 //Create an audio context from the HTML5 audio source
 audioCtx = new window.AudioContext();
 
-source0 = audioCtx.createMediaElementSource(document.getElementById("srcWolf"));
-source1 = audioCtx.createMediaElementSource(document.getElementById("srcMoose"));
-source2 = audioCtx.createMediaElementSource(document.getElementById("srcEnv"));
+source0 = audioCtx.createMediaElementSource(document.querySelector("#srcWolf"));
+source1 = audioCtx.createMediaElementSource(document.querySelector("#srcMoose"));
+source2 = audioCtx.createMediaElementSource(document.querySelector("#srcEnv"));
 console.log(source0);
 //Define Nodes to be connected
 gainNode0 = audioCtx.createGain();
