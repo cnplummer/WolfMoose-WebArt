@@ -124,7 +124,7 @@ a:hover.infoPopUp span{
     float: right;
 }
 /**
-Slider CSS 
+Slider CSS
 **/
 .player {
     width: 196px;
@@ -217,14 +217,11 @@ Inner items for the background carousel
     -ms-transition: opacity 3s;
     -o-transition: opacity 3s;
     transition: opacity 3s;
-
-
     -webkit-filter: grayscale(0.4) opacity(0.6) blur(3px);
     -moz-filter: grayscale(0.4) opacity(0.6) blur(3px);
     -o-filter: grayscale(0.4) opacity(0.6) blur(3px);
     -ms-filter: grayscale(0.4) opacity(0.6) blur(3px);
     filter: grayscale(0.4) opacity(0.6) blur(3px);
-
 }
 .carousel-bkg .one {
     background: url(/wolf-img/Bkg.png);
