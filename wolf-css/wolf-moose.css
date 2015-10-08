@@ -165,14 +165,9 @@ Slide Show Carousel CSS
 .slideshow .carousel-inner{
     height: 700px;
 }
-.slideshow .carousel-inner > .item {
-
-}
-
 .slideshow .carousel-inner > .item > img {
     height: 700px;
 }
-
 .slideshow .carousel-control {
     width: 10%;
 }
@@ -209,43 +204,68 @@ now override the 3.3 new styles for modern browsers & apply opacity
 Inner items for the background carousel
 */
 .carousel-bkg { z-index: -99; }  /*keeps this behind all content */
-.carousel-bkg .item {
+.carousel-bkg .carousel-inner .item {
     position: fixed;
     width: 100%; height: 100%;
-    -webkit-transition: opacity 3s;
-    -moz-transition: opacity 3s;
-    -ms-transition: opacity 3s;
-    -o-transition: opacity 3s;
-    transition: opacity 3s;
+    transition: opacity 3s; 
+    /*filter: grayscale(0.4) opacity(0.6) blur(3px);
     -webkit-filter: grayscale(0.4) opacity(0.6) blur(3px);
     -moz-filter: grayscale(0.4) opacity(0.6) blur(3px);
     -o-filter: grayscale(0.4) opacity(0.6) blur(3px);
-    -ms-filter: grayscale(0.4) opacity(0.6) blur(3px);
-    filter: grayscale(0.4) opacity(0.6) blur(3px);
+    -ms-filter: grayscale(0.4) opacity(0.6) blur(3px);*/
 }
 .carousel-bkg .one {
-    background: url(/wolf-img/Bkg.png);
+    background: url(/wolf-img/bkg/bkg1.jpg);
     background-size: cover;
     -moz-background-size: cover;
-    -webkit-filter: grayscale(0.4) opacity(0.6) blur(1px);
 }
 .carousel-bkg .two {
-    background: url(/wolf-img/wolves/DSC00437.jpg);
+    background: url(/wolf-img/bkg/bkg2.jpg);
     background-size: cover;
     -moz-background-size: cover;
 }
 .carousel-bkg .three {
-    background: url(/wolf-img/moose/DSCN1305.JPG);
+    background: url(/wolf-img/bkg/bkg3.jpg);
     background-size: cover;
     -moz-background-size: cover;
 }
 .carousel-bkg .four {
-    background: url(/wolf-img/wolves&moose/DSC00616.JPG);
+    background: url(/wolf-img/bkg/bkg4.jpg);
     background-size: cover;
     -moz-background-size: cover;
 }
-.carousel-bkg .active.left {
+.carousel-bkg .five {
+    background: url(/wolf-img/bkg/bkg5.jpg);
+    background-size: cover;
+    -moz-background-size: cover;
+}
+.carousel-bkg .six {
+    background: url(/wolf-img/bkg/bkg6.jpg);
+    background-size: cover;
+    -moz-background-size: cover;
+}
+.carousel-bkg .seven {
+    background: url(/wolf-img/bkg/bkg7.jpg);
+    background-size: cover;
+    -moz-background-size: cover;
+}
+.carousel-bkg .eight {
+    background: url(/wolf-img/bkg/bkg8.jpg);
+    background-size: cover;
+    -moz-background-size: cover;
+}
+.carousel-bkg .nine {
+    background: url(/wolf-img/bkg/bkg9.jpg);
+    background-size: cover;
+    -moz-background-size: cover;
+}
+.carousel-bkg .ten {
+    background: url(/wolf-img/bkg/bkg10.jpg);
+    background-size: cover;
+    -moz-background-size: cover;
+}
+/*.carousel-bkg .active.left {
     left:0;
     opacity:0;
     z-index:2;
-}
+}*/
