@@ -60,10 +60,10 @@ a:hover.infoPopUp span{
     margin-right: 18%;
 }
 .separatorBoxL {
-    border-right: 3px solid rgb(96, 56, 19);  
+    border-right: 3px solid rgb(96, 56, 19);
 }
 .separatorBoxR {
-    border-left: 3px solid rgb(96, 56, 19);  
+    border-left: 3px solid rgb(96, 56, 19);
 }
 .labels {
     font-family: futura;
@@ -89,29 +89,6 @@ a:hover.infoPopUp span{
     margin-top: -5px;
     float: right;
 }
-/*
-.wolf-label {
-padding: 1px;
-border: none;
-height: 35px;
-width: 72px;
-}
-
-.moose-label {
-padding: 1px;
-border: none;
-height: 28px;
-width: 73px;
-}
-.btn-env {
-padding: 1px;
-border: none;
-height: 28px;
-width: 127px;
-background: url('/wolf-img/button_environment.svg') no-repeat center;
-background-color: transparent;
-}
-*/
 .btn-wrap {
     width: 150px;
 }
@@ -146,29 +123,62 @@ background-color: transparent;
     margin-top: 5px;
     float: right;
 }
+/**
+Slider CSS 
+**/
+.player {
+    width: 196px;
+    height: 17px;
+    position: relative;
+    margin: 0 auto;
+    display: inline-block;
+    padding-left: 6px;
+}
+.volume {
+    position: absolute;
 
+    margin: 0 auto;
+    margin-top: 0px;
+    height: 13px;
+    width: 196px;
+    background: url('/wolf-img/FaderBar.png') no-repeat left ;
+}
+.volume .ui-slider-range-min {
+    height: 120px;
+    width: 7px;
+    position: absolute;
+}
+.volume .ui-slider-handle {
+    width: 15px;
+    height: 35px;
+    background: url('/wolf-img/Fader.png') no-repeat;
+    position: absolute;
+    margin-left: -8px;
+    margin-top: -10px;
+
+    cursor: pointer;
+    outline: none;
+}
 /*
 Slide Show Carousel CSS
 */
 .slideshow .carousel-inner{
-    height: 700px; 
+    height: 700px;
 }
 .slideshow .carousel-inner > .item {
 
 }
 
 .slideshow .carousel-inner > .item > img {
-    height: 700px; 
+    height: 700px;
 }
 
 .slideshow .carousel-control {
     width: 10%;
 }
-
-
 /*
 All the CSS for background Carousel, have to override some new implementations of transforms
-in Bootstrap 3.3 in order to get opacity transitions to work properly 
+in Bootstrap 3.3 in order to get opacity transitions to work properly
 
 WHAT IS NEW IN 3.3: "Added transforms to improve carousel performance in modern browsers."
 now override the 3.3 new styles for modern browsers & apply opacity
@@ -200,7 +210,7 @@ Inner items for the background carousel
 */
 .carousel-bkg { z-index: -99; }  /*keeps this behind all content */
 .carousel-bkg .item {
-    position: fixed; 
+    position: fixed;
     width: 100%; height: 100%;
     -webkit-transition: opacity 3s;
     -moz-transition: opacity 3s;
@@ -208,7 +218,7 @@ Inner items for the background carousel
     -o-transition: opacity 3s;
     transition: opacity 3s;
 
-    
+
     -webkit-filter: grayscale(0.4) opacity(0.6) blur(3px);
     -moz-filter: grayscale(0.4) opacity(0.6) blur(3px);
     -o-filter: grayscale(0.4) opacity(0.6) blur(3px);
@@ -221,7 +231,6 @@ Inner items for the background carousel
     background-size: cover;
     -moz-background-size: cover;
     -webkit-filter: grayscale(0.4) opacity(0.6) blur(1px);
-
 }
 .carousel-bkg .two {
     background: url(/wolf-img/wolves/DSC00437.jpg);
