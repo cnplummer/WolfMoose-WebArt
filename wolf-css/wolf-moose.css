@@ -184,6 +184,10 @@ Background Slideshow CSS
     left: 0px;
     z-index: -10;
 }
+.bkg-slideshow:after {
+  content: '';
+  background: url(../wolf-img/bkg/dotted_overlay.png) repeat top left;
+}
 .bkg-slideshow li span {
     width: 100%;
     height: 100%;
