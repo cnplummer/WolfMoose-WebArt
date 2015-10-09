@@ -129,8 +129,28 @@ a:hover.infoPopUp span{
     margin-top: 5px;
     float: right;
 }
-.transport-bar {
+.btn-slideshow, .btn-return {
+    position: absolute;
+    margin-left: 10px;
+    font-family: futura;
+    font-size: 16px;
+    background-color: rgb(169, 123, 80);
+    border-color: rgb(96, 56, 19);
+    border-width: 2px;
+    color: white;
+}
+.btn-slideshow:hover, .btn-return:hover,
+.btn-slideshow:active, .btn-return:active{
+    background-color: rgb(169, 123, 80);
+    border-color: rgb(96, 56, 19);
+    border-width: 2px;
+}
+.btn-slideshow {
     bottom: 0;
+    margin-bottom: 20px;
+}
+.btn-return {
+    margin-top: 20px;
 }
 /**
 Slider CSS

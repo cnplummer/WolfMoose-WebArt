@@ -67,7 +67,7 @@
         <p>Your browser doesn't support the audio element.</p>
     </audio>
 
-    <div class="container-fluid mainContainer">
+    <div id="mainContainer" class="container-fluid mainContainer">
         <h1 class="intro-text">Sounds of the Wolf & Moose Study</h1>
         <hr class="separator">
         <div class="row" style="padding-top: 5%">
@@ -112,7 +112,7 @@
         </div>
 
 
-        <div class="row" style="padding-bottom:8%">
+        <div class="row" style="padding-bottom:6%">
             <!--                Slider 1-->
             <div class="col-lg-4">
                 <div class="sliderContainer centered">
@@ -174,9 +174,15 @@
                 <hr class="btnSeparator leftSep" style="margin-top:23px">
             </div>
         </div>
+        <a href="#slideshowContainer" class="btn btn-default btn-slideshow">
+            View Informational Slideshow
+        </a>
     </div>
     <!--            Slideshow -->
-    <div  class="container-fluid slideshowContainer">
+    <div  id="slideshowContainer" class="container-fluid slideshowContainer">
+        <a href="#mainContainer" class="btn btn-default btn-return">
+            Return
+        </a>
         <div id="slideshow" class="carousel slide" data-ride="carousel">
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
