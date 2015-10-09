@@ -162,13 +162,11 @@ Slider CSS
 /*
 Slide Show Carousel CSS
 */
-.slideshow .carousel-inner{
-    height: 700px;
+#slideshow {
+    height: 675px;
+    width: 900px;
 }
-.slideshow .carousel-inner > .item > img {
-    height: 700px;
-}
-.slideshow .carousel-control {
+#slideshow .carousel-control {
     width: 10%;
 }
 /*
