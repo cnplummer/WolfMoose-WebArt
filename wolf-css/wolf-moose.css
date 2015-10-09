@@ -2,6 +2,9 @@
     font-family: futura;
     src: url('/wolf-fonts/futura.ttf');
 }
+html, body {
+  height: 100%;
+}
 .fa {
     color: rgb(96, 56, 19);
 }
@@ -28,6 +31,9 @@ a:hover.infoPopUp span{
     opacity: 0.9;
     top: 40px;
     z-index: 999;
+}
+.mainContainer, .slideshowContainer {
+    height: 100%;
 }
 .intro-text {
     padding-left: 10px;
@@ -123,6 +129,9 @@ a:hover.infoPopUp span{
     margin-top: 5px;
     float: right;
 }
+.transport-bar {
+    bottom: 0;
+}
 /**
 Slider CSS
 **/
@@ -165,6 +174,8 @@ Slide Show Carousel CSS
 #slideshow {
     height: 675px;
     width: 900px;
+    margin: auto;
+    margin-top: 60px;
 }
 #slideshow .carousel-control {
     width: 10%;
