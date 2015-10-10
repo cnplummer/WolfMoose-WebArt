@@ -11,8 +11,7 @@
     <title>Wolf & Moose Sonification</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/wolf-css/bootstrap.css" rel="stylesheet">
-
+    <link href="/wolf-css/bootstrap.min.css" rel="stylesheet">
     <link href="/wolf-css/wolf-moose.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -183,7 +182,7 @@
         <a href="#mainContainer" class="btn btn-default btn-return">
             Return
         </a>
-        <div id="slideshow" class="carousel slide" data-ride="carousel">
+        <div id="slideshow" class="carousel slide" data-ride="carousel" data-interval="false">
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
@@ -241,16 +240,16 @@
                 <div class="item">
                     <img src="/wolf-img/slides/Slide17.jpg" alt="PowerPoint Presentation">
                 </div>
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#slideshow" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#slideshow" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
-            <!-- Left and right controls -->
-            <a class="left carousel-control" href="#slideshow" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#slideshow" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
         </div>
     </div>
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>

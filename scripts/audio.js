@@ -386,3 +386,19 @@ setTimeout(function() {
     $(".slider3").slider("value", 24);
     gainNode2.gain.value = 2;
 }, 2000);
+
+// Make smooth scrolling between on-page reference href's
+$(function() {
+  $('a[href*=#]:not([href=#slideshow])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
