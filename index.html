@@ -5,20 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="A web based implementation of the Isle Royale Wolf Moose study sonification audio exhibit,
-        Initially produced at Michigan Technological University under the supervision of Christopher Plummer. Collaborators include Paul Kirby,
-        Mason Pew, Thomas Conran, Collin Doer-Newton, John Vucitech">
+    Initially produced at Michigan Technological University under the supervision of Christopher Plummer. Collaborators include Paul Kirby,
+    Mason Pew, Thomas Conran, Collin Doer-Newton, John Vucitech">
     <meta name="author" content="Paul Kirby, Mason Pew, Matthew Vaught">
     <link rel="icon" href="../../favicon.ico">
     <title>Wolf & Moose Sonification</title>
     <!-- Bootstrap core CSS -->
     <link href="/wolf-css/bootstrap.min.css" rel="stylesheet">
     <link href="/wolf-css/wolf-moose.css" rel="stylesheet">
-    <!-- Modernizr feature detection for web audio API -->
-    <script src="/wolf-js/modernizr-custom.js"></script>
     <script>
-        if (!Modernizr.webkitAudioContext) {
-            window.location.replace("no-web-audio.html")
-        }
+    if (!(window.webkitAudioContext || window.AudioContext)) {
+        window.location.replace("no-web-audio.html");
+    }
     </script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
