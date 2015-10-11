@@ -14,8 +14,13 @@
     <link href="/wolf-css/bootstrap.min.css" rel="stylesheet">
     <link href="/wolf-css/wolf-moose.css" rel="stylesheet">
     <script>
+    console.log(window.innerWidth);
+    console.log(window.innerHeight);
+    if (window.innerHeight < 675 || window.innerWidth < 1280) {
+        window.location.replace("low-resolution.html");
+    }
     if (!window.AudioContext) {
-            window.location.replace("no-web-audio.html");
+        window.location.replace("no-web-audio.html");
     }
     </script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
