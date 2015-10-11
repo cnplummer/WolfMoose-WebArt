@@ -14,8 +14,8 @@
     <link href="/wolf-css/bootstrap.min.css" rel="stylesheet">
     <link href="/wolf-css/wolf-moose.css" rel="stylesheet">
     <script>
-    if (!(window.webkitAudioContext || window.AudioContext)) {
-        window.location.replace("no-web-audio.html");
+    if (!window.AudioContext) {
+            window.location.replace("no-web-audio.html");
     }
     </script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

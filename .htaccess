@@ -37,6 +37,6 @@
     ExpiresActive On
 
     # Audio
-    # ExpiresByType audio/mpeg A31536000
+    ExpiresByType audio/mpeg A31536000
 
 </IfModule>
