@@ -241,8 +241,13 @@ function audioProcess(source, analyser, ctx, tempCtx, canvas, tempCanvas, media)
 function setupProcess(gainNode, analyser) {
     "use strict";
     analyser.smoothingTimeConstant = 0;
-    analyser.fftSize = 1024;
-
+    if (gainNode === gainNode1) {
+        analyser.fftSize = 8192;
+    } else if (gainNode === gainNode2){
+        analyser.fftSize = 4096;
+    } else {
+        analyser.fftSize = 2048;
+    }
     gainNode.connect(analyser);
 }
 
@@ -331,9 +336,9 @@ tempCanvas1.height = canvasHeight;
 tempCanvas2.height = canvasHeight;
 
 // setup a javascript node [affects speed]
-javascriptNode0 = audioCtx.createScriptProcessor(2048, 1, 1);
-javascriptNode1 = audioCtx.createScriptProcessor(2048, 1, 1);
-javascriptNode2 = audioCtx.createScriptProcessor(2048, 1, 1);
+javascriptNode0 = audioCtx.createScriptProcessor(4096, 1, 1);
+javascriptNode1 = audioCtx.createScriptProcessor(4096, 1, 1);
+javascriptNode2 = audioCtx.createScriptProcessor(4096, 1, 1);
 
 initializeVariables();
 
@@ -351,7 +356,7 @@ $(".slider1").slider({
     animate: "true",
     orientation: "horizontal",
     slide: function(event, ui) {
-    setVolume(gainNode0, ui.value / 20);
+    setVolume(gainNode0, ui.value / 100);
     }
 });
 $(".slider2").slider({
@@ -361,7 +366,7 @@ $(".slider2").slider({
     orientation: "horizontal",
     animate: "true",
     slide: function(event, ui) {
-    setVolume(gainNode1, ui.value / 10);
+    setVolume(gainNode1, ui.value / 100);
     }
 });
 $(".slider3").slider({
@@ -371,7 +376,7 @@ $(".slider3").slider({
     orientation: "horizontal",
     animate: "true",
     slide: function(event, ui) {
-    setVolume(gainNode2, ui.value / 12);
+    setVolume(gainNode2, ui.value / 100);
     }
 });
 function setVolume(node, myGain) {
@@ -380,11 +385,11 @@ node.gain.value = myGain;
 
 setTimeout(function() {
     $(".slider1").slider("value", 20);
-    gainNode0.gain.value = 1;
+    gainNode0.gain.value = 0.2;
     $(".slider2").slider("value", 20);
-    gainNode1.gain.value = 2;
-    $(".slider3").slider("value", 24);
-    gainNode2.gain.value = 2;
+    gainNode1.gain.value = 0.2;
+    $(".slider3").slider("value", 20);
+    gainNode2.gain.value = 0.2;
 }, 2000);
 
 // Make smooth scrolling between on-page reference href's
