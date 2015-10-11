@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A web based implementation of the Isle Royale Wolf Moose study sonification audio exhibit,
+    Initially produced at Michigan Technological University under the supervision of Christopher Plummer. Collaborators include Paul Kirby,
+    Mason Pew, Thomas Conran, Collin Doer-Newton, John Vucitech">
+    <meta name="author" content="Paul Kirby, Mason Pew, Matthew Vaught">
+    <link rel="icon" href="../../favicon.ico">
+    <title>Wolf & Moose Sonification</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/wolf-css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<style>
+@font-face {
+    font-family: futura;
+    src: url('/wolf-fonts/futura.ttf');
+}
+html, body {
+    height: 100%;
+}
+.bkg,
+.bkg:after {
+    list-style-type: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: -10;
+}
+.bkg:after {
+    content: '';
+    background: url(../wolf-img/bkg/dotted_overlay.png) repeat top left;
+}
+.bkg span {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: transparent;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: none;
+    background-image: url(../wolf-img/bkg/bkg5.jpg);
+    z-index: -10;
+}
+.intro-text {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 15px;
+    text-align: center;
+    padding-top: 10px;
+    font-family: futura;
+    font-size: 50px;
+}
+.separator {
+    width: 85%;
+    border: 0px;
+    color: #000;
+    background-color: #000;
+    height: 2px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.row-info, .row-icons {
+    padding: 60px;
+    text-shadow: 5px;
+    margin: auto;
+}
+.browser-icon,
+.browser-icon:hover {
+    color: black;
+}
+.browser-icon img {
+    height: 128px;
+    width: 128px;
+    display: block;
+    margin: auto;
+    vertical-align: middle;
+}
+.browser-icon h4 {
+    text-align: center;
+}
+</style>
+<div class="bkg">
+    <span></span>
+</div>
+<div id="mainContainer" class="container-fluid mainContainer">
+    <h1 class="intro-text">Sounds of the Wolf & Moose Study</h1>
+    <hr class="separator">
+    <div class="row row-info">
+        <h4 style="text-align: center">Your browser does not support the Web Audio API neccesary to make the installation run. Please install the most
+            recent version of either Opera, Google Chrome, or Firefox to enjoy this application. Links are provided below. Thank you!
+        </h4>
+    </div>
+    <div class="row row-icons">
+        <div class="col-lg-4">
+            <a class="browser-icon" href="http://www.opera.com/computer">
+                <h4>Opera</h4>
+                <img src="/wolf-img/icons/opera.png">
+            </a>
+        </div>
+        <div class="col-lg-4">
+            <a class="browser-icon" href="https://www.google.com/chrome/browser/desktop/">
+                <h4>Google Chrome</h4>
+                <img src="/wolf-img/icons/chrome.png">
+            </a>
+        </div>
+        <div class="col-lg-4">
+            <a class="browser-icon" href="https://www.mozilla.org/en-US/firefox/new/">
+                <h4>Firefox</h4>
+                <img src="/wolf-img/icons/firefox.png">
+            </a>
+        </div>
+    </div>
+</body>
+</html>
