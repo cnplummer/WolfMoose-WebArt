@@ -14,11 +14,6 @@
     <link href="/wolf-css/bootstrap.min.css" rel="stylesheet">
     <link href="/wolf-css/wolf-moose.css" rel="stylesheet">
     <script>
-    console.log(window.innerWidth);
-    console.log(window.innerHeight);
-    if (window.innerHeight < 675 || window.innerWidth < 1280) {
-        window.location.replace("low-resolution.html");
-    }
     if (!window.AudioContext) {
         window.location.replace("no-web-audio.html");
     }
@@ -79,9 +74,25 @@
     <div id="mainContainer" class="container-fluid mainContainer">
         <h1 class="intro-text">Sounds of the Wolf & Moose Study</h1>
         <hr class="separator">
-        <div class="row" style="padding-top: 2%">
-            <div class="col-lg-1">
-                <a class="infoPopUp" href="http://en.wikipedia.org/wiki/Spectrogram" target="_blank">
+        <style>
+            #spectrogram-pop-up {
+                float: left;
+                margin-right: -60px;
+            }
+            #wolf-label {
+                clear: right;
+            }
+            .spectrogram-row .col-lg-4 {
+                padding-bottom: 30px;
+            }
+            .spectrogram-row .sliderContainer {
+                margin-top: 30px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <div class="row spectrogram-row" style="padding-top: 2%">
+            <div class="col-lg-4">
+                <a id="spectrogram-pop-up" class="infoPopUp" href="http://en.wikipedia.org/wiki/Spectrogram" target="_blank">
                     <i title="" class="fa fa-2x fa-info-circle" style="margin-top:20px; margin-left:22px"></i>
                     <span>This is a spectrogram. It shows frequency and amplitude data as it relates
                         to time. As the music you hear is being played, the spectrogram maps the
@@ -91,39 +102,8 @@
                         the info icon.
                     </span>
                 </a>
-            </div>
-            <div class="col-lg-2">
-                <h3 class="labels">Wolf</h3>
-            </div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-4 ">
-                <h3 class="labels">Moose</h3>
-            </div>
-
-            <div class="col-lg-4">
-                <h3 class="labels">Environment</h3>
-            </div>
-        </div>
-
-        <div class="row" style="padding-bottom:3%">
-
-            <div class="col-lg-4">
+                <h3 id="wolf-label" class="labels">Wolf</h3>
                 <canvas class="centered" id="canvas0" width="400" height="256" style="display: block; background-color: black ;"></canvas>
-            </div>
-
-            <div class="col-lg-4">
-                <canvas class="centered" id="canvas1" width="400" height="256" style="display: block; background-color: black ;"></canvas>
-            </div>
-
-            <div class="col-lg-4">
-                <canvas class="centered" id="canvas2" width="400" height="256" style="display: block; background-color: black ;"></canvas>
-            </div>
-        </div>
-
-
-        <div class="row" style="padding-bottom:4%">
-            <!--                Slider 1-->
-            <div class="col-lg-4">
                 <div class="sliderContainer centered">
                     <img src="/wolf-img/SPK_Mute.png" class="sliderIconL">
                     <div class="player">
@@ -132,9 +112,9 @@
                     <img src="/wolf-img/SPK_Loud.png" class="sliderIconR">
                 </div>
             </div>
-
-            <!--                Slider 2-->
-            <div class="col-lg-4 slider">
+            <div class="col-lg-4 ">
+                <h3 class="labels">Moose</h3>
+                <canvas class="centered" id="canvas1" width="400" height="256" style="display: block; background-color: black ;"></canvas>
                 <div class="sliderContainer centered">
                     <img src="/wolf-img/SPK_Mute.png" class="sliderIconL">
                     <div class="player">
@@ -143,9 +123,9 @@
                     <img src="/wolf-img/SPK_Loud.png" class="sliderIconR">
                 </div>
             </div>
-
-            <!--                Slider 3-->
             <div class="col-lg-4">
+                <h3 class="labels">Environment</h3>
+                <canvas class="centered" id="canvas2" width="400" height="256" style="display: block; background-color: black ;"></canvas>
                 <div class="sliderContainer centered">
                     <img src="/wolf-img/SPK_Mute.png" class="sliderIconL">
                     <div class="player">
@@ -155,6 +135,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Info Pop UP and buttons -->
         <div class="row transport-bar">
             <div class="col-lg-5 separatorBoxL" style="height:50px; padding-right:0px" >

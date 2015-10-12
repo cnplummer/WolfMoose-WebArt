@@ -12,6 +12,12 @@ a.infoPopUp {
     display: inline;
     position: relative;
 }
+@media (max-width: 750px) {
+    .infoPopUp i::before {
+        content = "";
+        display: none;
+    }
+}
 a.infoPopUp span{
     position: absolute;
     left: 20%;
@@ -34,6 +40,11 @@ a:hover.infoPopUp span{
 }
 .mainContainer, .slideshowContainer {
     height: 100%;
+}
+@media (max-width: 1279px) {
+    .mainContainer, .slideshowContainer {
+        height: auto;
+    }
 }
 .intro-text {
     padding-left: 10px;
@@ -70,6 +81,11 @@ a:hover.infoPopUp span{
 }
 .separatorBoxR {
     border-left: 3px solid rgb(96, 56, 19);
+}
+@media (max-width: 1279px) {
+    .separatorBoxR, .separatorBoxL {
+        display: none;
+    }
 }
 .labels {
     font-family: futura;
@@ -140,7 +156,8 @@ a:hover.infoPopUp span{
     color: white;
 }
 .btn-slideshow:hover, .btn-return:hover,
-.btn-slideshow:active, .btn-return:active{
+.btn-slideshow:active, .btn-return:active,
+.btn-slideshow:focus, .btn-return:focus{
     background-color: rgb(169, 123, 80);
     border-color: rgb(96, 56, 19);
     border-width: 2px;
@@ -151,6 +168,11 @@ a:hover.infoPopUp span{
 }
 .btn-return {
     margin-top: 20px;
+}
+@media (max-width: 1279px) {
+    .btn-slideshow, .btn-return {
+        display: none;
+    }
 }
 /**
 Slider CSS
@@ -184,7 +206,6 @@ Slider CSS
     position: absolute;
     margin-left: -8px;
     margin-top: -10px;
-
     cursor: pointer;
     outline: none;
 }
@@ -196,6 +217,13 @@ Slide Show Carousel CSS
     width: 900px;
     margin: auto;
     margin-top: 60px;
+    margin-bottom: 20px;
+}
+@media (max-width: 1279px) {
+    #slideshow {
+        width: 75%;
+        height: auto;
+    }
 }
 /*#slideshow .carousel-control {
     width: 10%;
