@@ -213,8 +213,8 @@ Slider CSS
 Slide Show Carousel CSS
 */
 #slideshow {
-    height: 675px;
-    width: 900px;
+    height: 540px;
+    width: 720px;
     margin: auto;
     margin-top: 60px;
     margin-bottom: 20px;
@@ -225,9 +225,9 @@ Slide Show Carousel CSS
         height: auto;
     }
 }
-/*#slideshow .carousel-control {
+#slideshow .carousel-control {
     width: 10%;
-}*/
+}
 /*
 Background Slideshow CSS
 */
